@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import settings.Settings;
-
 import java.util.Objects;
 
 public class Main extends Application implements Settings {

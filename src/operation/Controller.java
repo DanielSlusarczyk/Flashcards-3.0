@@ -2,14 +2,18 @@ package operation;
 
 import exceptions.UnhandledSituationException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import management.CardsManager;
 import settings.Settings;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable, Settings {
@@ -25,9 +29,15 @@ public class Controller implements Initializable, Settings {
     Button button5;
     @FXML
     Button button6;
+    @FXML
+    AnchorPane rootPane;
 
     private ArrayList <javafx.scene.control.Button> buttons;
-    CardsManager cardsManager;
+    private static CardsManager cardsManager;
+
+    public static CardsManager getCardsManager(){
+        return cardsManager;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,7 +64,10 @@ public class Controller implements Initializable, Settings {
             button.setOnAction(e -> {
                 try {
                     initializeByChosenSet(button.getText());
-                } catch (UnhandledSituationException exception) {
+                    //Load new FXML and assign it to scene
+                    AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/cards.fxml")));
+                    rootPane.getChildren().setAll(pane);
+                } catch (UnhandledSituationException | IOException exception) {
                     System.out.println(exception.toString());
                 }
             });

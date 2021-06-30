@@ -4,37 +4,47 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="operation.Controller">
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="operation.Controller">
    <children>
-      <Button fx:id="button1" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Verb">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <HBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </HBox.margin></Button>
-      <Button fx:id="button2" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Noun">
-         <HBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </HBox.margin></Button>
-      <Button fx:id="button3" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Adjective">
-         <padding>
-            <Insets left="10.0" right="10.0" />
-         </padding>
-         <HBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </HBox.margin></Button>
-      <Button fx:id="button4" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Adverb">
-         <HBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </HBox.margin></Button>
-      <Button fx:id="button5" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Phrasal Verb" wrapText="true">
-         <HBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </HBox.margin></Button>
-      <Button fx:id="button6" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="All">
-         <HBox.margin>
-            <Insets left="10.0" right="10.0" />
-         </HBox.margin></Button>
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="button1" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Verb">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="button2" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Noun">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="button3" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Adjective">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="button4" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Adverb">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="button5" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Phrasal Verb" wrapText="true">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="button6" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="All">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </children>
-</HBox>
+</AnchorPane>

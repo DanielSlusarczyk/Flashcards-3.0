@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="operation.CardsController">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="answerTextField" alignment="CENTER" layoutX="27.0" layoutY="236.0" prefHeight="62.0" prefWidth="546.0">
+               <font>
+                  <Font name="Microsoft YaHei" size="30.0" />
+               </font>
+            </TextField>
+            <Label layoutX="27.0" layoutY="219.0" prefHeight="17.0" prefWidth="321.0" text="Answer:" />
+            <Label fx:id="questionLabel" alignment="CENTER" layoutX="27.0" layoutY="138.0" prefHeight="17.0" prefWidth="546.0">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button layoutX="434.0" layoutY="319.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="139.0" text="Check" />
+            <Label alignment="CENTER" layoutX="127.0" layoutY="14.0" prefHeight="66.0" prefWidth="347.0" text="FlashCards 3.0">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <Button fx:id="startButton" layoutX="123.0" layoutY="152.0" mnemonicParsing="false" onAction="#startButtonAction" prefHeight="62.0" prefWidth="354.0" text="Start" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
