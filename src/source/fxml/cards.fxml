@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -10,27 +11,22 @@
    <children>
       <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/background.png" />
+            <Image url="@../img/cardsBackground.png" />
          </image>
       </ImageView>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
          <children>
-            <TextField fx:id="answerTextField" alignment="CENTER" layoutX="100.0" layoutY="329.0" prefHeight="66.0" prefWidth="523.0">
+            <TextField fx:id="answerTextField" alignment="CENTER" layoutX="92.0" layoutY="320.0" prefHeight="66.0" prefWidth="540.0">
                <font>
                   <Font name="Microsoft YaHei" size="30.0" />
                </font>
             </TextField>
-            <Label fx:id="questionLabel" alignment="CENTER" layoutX="27.0" layoutY="138.0" prefHeight="17.0" prefWidth="546.0">
+            <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="196.0" prefHeight="17.0" prefWidth="546.0" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
             <Button id="answerButton" layoutX="448.0" layoutY="407.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="175.0" stylesheets="@../css/buttons.css" text="Check" />
-            <Label alignment="CENTER" layoutX="182.0" layoutY="30.0" prefHeight="66.0" prefWidth="347.0" text="FlashCards 3.0">
-               <font>
-                  <Font name="Roboto Thin" size="45.0" />
-               </font>
-            </Label>
             <Button id="transparentButton" fx:id="slideButton" mnemonicParsing="false" onAction="#slideButtonAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/buttons.css">
                <font>
                   <Font size="20.0" />
@@ -48,50 +44,78 @@
             </Button>
          </children>
       </Pane>
-      <VBox fx:id="menuVBox" layoutX="-80.0" prefHeight="400.0" prefWidth="80.0">
+      <Pane fx:id="menuPane" layoutX="-80.0" style="-fx-background-color: #1a1a1a;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="145.0" text="Menu">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <Button id="transparentButton" fx:id="addButton" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
-               <graphic>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/addIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button id="transparentButton" mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
-               <graphic>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/statusIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button id="transparentButton" mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
-               <graphic>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/settingsIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button id="transparentButton" mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
-               <graphic>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/exitIcon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <VBox fx:id="menuVBox" prefHeight="500.0" prefWidth="80.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="145.0" text="Menu" textFill="WHITE">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Button id="transparentButton" fx:id="addButton" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/addIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button id="transparentButton" mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/statusIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button id="transparentButton" mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/settingsIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button id="transparentButton" mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/exitIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
          </children>
-      </VBox>
+      </Pane>
    </children>
 </AnchorPane>

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import operation.AutoSaveThread;
@@ -30,7 +31,7 @@ public class CardsController implements Initializable, Settings{
     @FXML
     Button slideButton;
     @FXML
-    VBox menuVBox;
+    Pane menuPane;
     @FXML
     AnchorPane rootPane;
 
@@ -40,7 +41,7 @@ public class CardsController implements Initializable, Settings{
     private long lastTime;
     private static CardsManager cardsManager;
     private AnimationTimer timer;
-    private AutoSaveThread autoSaveThread;
+    private static AutoSaveThread autoSaveThread;
     private Phrase phrase;
     private boolean menuShown;
 
@@ -65,7 +66,7 @@ public class CardsController implements Initializable, Settings{
                 }
             }
         };
-        menuTranslation = new TranslateTransition(Duration.millis(500), menuVBox);
+        menuTranslation = new TranslateTransition(Duration.millis(500), menuPane);
         slideButtonTranslation = new TranslateTransition(Duration.millis(500), slideButton);
         slideButtonTranslation.setFromX(0);
         slideButtonTranslation.setToX(80);
@@ -89,6 +90,9 @@ public class CardsController implements Initializable, Settings{
         timer.start();
     }
 
+    public static AutoSaveThread getThread(){
+        return autoSaveThread;
+    }
 
     @FXML
     private void slideButtonAction(){

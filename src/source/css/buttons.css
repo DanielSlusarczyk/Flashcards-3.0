@@ -4,10 +4,8 @@
     -fx-border-width: 0;
     -fx-background-radius: 5;
     -fx-background-color: rgba(255, 255, 255, 0);
-    -fx-font-family: "Arial";
     -fx-font-size: 25px;
-    -fx-font-weight: bold;
-    -fx-text-fill: rgba(0, 0, 0, 1)
+    -fx-text-fill: rgba(255, 255, 255, 1)
 }
 #categoryButton:hover{
 -fx-background-color: rgba(255, 255, 255, 0.2);
@@ -18,8 +16,6 @@
     -fx-border-width: 0;
     -fx-background-radius: 5;
     -fx-background-color: rgba(255, 255, 255, 0);
-    -fx-font-family: "Arial";
-    -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: rgba(255, 255, 255, 1)
 }
@@ -31,10 +27,9 @@
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 5;
-    -fx-background-color: rgba(255, 255, 255, 0.5);
-    -fx-font-family:"Courier New", Helvetica, Courier New, sans-serif;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
     -fx-font-size: 25px;
-    -fx-text-fill: rgba(0, 0, 0, 1)
+    -fx-text-fill: rgba(255, 255, 255, 1)
 }
 #answerButton:hover{
 -fx-background-color: rgba(255, 255, 255, 0.0.6);
@@ -42,5 +37,42 @@
 
 #transparentButton{
     -fx-background-color:transparent;
+}
+
+#translationButton{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 10;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-font-size: 15px;
+    -fx-text-fill: rgba(255, 255, 255, 1)
+}
+#translationButton:hover{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 10;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(255, 255, 255, 1)
+}
+
+#categoriesAddButton{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-font-size: 15px;
+    -fx-text-fill: rgba(255, 255, 255, 1)
+}
+
+#categoriesAddedButton{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(255, 255, 255, 1)
 }
 

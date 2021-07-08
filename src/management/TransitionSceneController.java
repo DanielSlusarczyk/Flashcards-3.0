@@ -19,4 +19,6 @@ public class TransitionSceneController implements Initializable {
         amountLabel.setText(String.valueOf(cardsManager.getAmount()));
         categoryLabel.setText(cardsManager.getName());
     }
+
+
 }

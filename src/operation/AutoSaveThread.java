@@ -14,7 +14,8 @@ public class AutoSaveThread extends Thread implements Settings {
 
     @Override
     public void run() {
-        while(true){
+        boolean threadInterrupted = false;
+        while(!threadInterrupted){
             synchronized (cardsManager) {
                 FileReader.writeCards(wordPath, cardsManager.autoSaveIterator());
             }
@@ -22,6 +23,7 @@ public class AutoSaveThread extends Thread implements Settings {
                 sleep(delay);
             } catch (InterruptedException e) {
                 System.out.println("End of AutoSaving");
+                threadInterrupted = true;
             }
             System.out.println("[INFO]Auto-saving");
         }

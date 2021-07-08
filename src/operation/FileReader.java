@@ -25,7 +25,7 @@ public class FileReader {
             List<String> translation = extractTranslation(tmpLine);
             int correctAnswers = Integer.parseInt(tmpLine.substring(tmpLine.indexOf("<Result>") + 8, tmpLine.indexOf("<>")));
             int allAnswers = Integer.parseInt(tmpLine.substring(tmpLine.indexOf("<>") + 2, tmpLine.indexOf("<Grp>")));
-            addToDictionary(tmpLine, engWord, translation, correctAnswers, allAnswers);
+            addToDictionary(tmpLine.substring(tmpLine.indexOf("<Grp>") + 5), engWord, translation, correctAnswers, allAnswers);
         }
     }
 
@@ -56,8 +56,7 @@ public class FileReader {
         return translation;
     }
 
-    private static void addToDictionary(String tmpLine, String engWord, List<String> translation, int correctAnswers, int allAnswers) {
-        String group = tmpLine.substring(tmpLine.indexOf("<Grp>") + 5);
+    public static void addToDictionary(String group, String engWord, List<String> translation, int correctAnswers, int allAnswers) {
         CardsManager.allWords.addCard(engWord, translation, correctAnswers, allAnswers, group);
         switch (group) {
             case "PV" -> CardsManager.phrasalVerbs.addCard(engWord, translation, correctAnswers, allAnswers, "PV");

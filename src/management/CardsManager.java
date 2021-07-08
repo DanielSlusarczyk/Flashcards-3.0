@@ -97,6 +97,10 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         return usedDictionary.getName();
     }
 
+    public void addNewCard(String engWord, List<String> translation, String group){
+
+    }
+
     public void addPhrase(Phrase phrase) {
         allWords.add(phrase);
         usedDictionary.add(phrase);

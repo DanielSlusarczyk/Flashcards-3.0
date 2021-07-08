@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -27,8 +26,6 @@ public class Controller implements Initializable, Settings {
     AnchorPane rootPane;
     @FXML
     Pane p1, p2, p3, p4, p5, p6;
-    @FXML
-    Label categoryLabel, amountLabel;
 
     boolean categoriesMenuIsActive = false;
     boolean categoryIsChosen = false;
@@ -135,27 +132,46 @@ public class Controller implements Initializable, Settings {
 
     private void changeScene() {
         //Load new FXML and assign it to scene
-        AnchorPane transitionPane = null;
-        try {
-            transitionPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/transitionScene.fxml")));
-            rootPane.getChildren().setAll(transitionPane);
-            FadeTransition paneFadeIn = new FadeTransition(Duration.millis(500), transitionPane);
-            paneFadeIn.setFromValue(1);
-            paneFadeIn.setToValue(0);
-            paneFadeIn.setCycleCount(1);
-            paneFadeIn.play();
-            paneFadeIn.setOnFinished(actionEvent -> {
-                AnchorPane cardsPane = null;
-                try {
-                    cardsPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/cards.fxml")));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                rootPane.getChildren().setAll(cardsPane);
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        FadeTransition paneFadeInRootPane = new FadeTransition(Duration.millis(1500), rootPane);
+        paneFadeInRootPane.setFromValue(1);
+        paneFadeInRootPane.setToValue(0);
+        paneFadeInRootPane.setCycleCount(1);
+        paneFadeInRootPane.play();
+        paneFadeInRootPane.setOnFinished(actionEvent -> {
+            AnchorPane transitionPane = null;
+            try {
+                transitionPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/transitionScene.fxml")));
+                rootPane.getChildren().setAll(transitionPane);
+                FadeTransition paneFadeInAmountLabel = new FadeTransition(Duration.millis(1500), rootPane);
+                paneFadeInAmountLabel.setFromValue(0);
+                paneFadeInAmountLabel.setToValue(1);
+                paneFadeInAmountLabel.setCycleCount(1);
+                paneFadeInAmountLabel.play();
+                FadeTransition paneFadeOutAmountLabel = new FadeTransition(Duration.millis(1500), rootPane);
+                paneFadeOutAmountLabel.setFromValue(1);
+                paneFadeOutAmountLabel.setToValue(0);
+                paneFadeOutAmountLabel.setCycleCount(1);
+                paneFadeOutAmountLabel.play();
+                paneFadeOutAmountLabel.setOnFinished(event -> {
+                    AnchorPane cardsPane = null;
+                    try {
+                        cardsPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/cards.fxml")));
+                        rootPane.getChildren().setAll(cardsPane);
+                        FadeTransition paneFadeInCards = new FadeTransition(Duration.millis(1500), rootPane);
+                        paneFadeInCards.setFromValue(0);
+                        paneFadeInCards.setToValue(1);
+                        paneFadeInCards.setCycleCount(1);
+                        paneFadeInCards.play();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
 }

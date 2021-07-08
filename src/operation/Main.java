@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import management.CardsController;
 import settings.Settings;
 import java.util.Objects;
 
@@ -16,6 +17,10 @@ public class Main extends Application implements Settings {
         primaryStage.setTitle("FlashCards 3.0");
         primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
         primaryStage.show();
+        primaryStage.setOnCloseRequest(windowEvent -> {
+            if(CardsController.getThread()!=null)
+                CardsController.getThread().interrupt();
+        });
     }
 
 
