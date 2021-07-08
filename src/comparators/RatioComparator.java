@@ -1,8 +1,10 @@
-package operation;
+package comparators;
 
 import phrases.Phrase;
 
-public class RatioComparator implements java.util.Comparator<Phrase> {
+import java.util.Comparator;
+
+public class RatioComparator implements Comparator<Phrase> {
 
     @Override
     public int compare(Phrase o1, Phrase o2) {

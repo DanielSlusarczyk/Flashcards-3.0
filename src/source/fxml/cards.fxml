@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="operation.CardsController">
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.CardsController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <TextField fx:id="answerTextField" alignment="CENTER" layoutX="27.0" layoutY="236.0" prefHeight="62.0" prefWidth="546.0">
+            <TextField fx:id="answerTextField" alignment="CENTER" layoutX="138.0" layoutY="236.0" prefHeight="62.0" prefWidth="435.0">
                <font>
                   <Font name="Microsoft YaHei" size="30.0" />
                </font>
             </TextField>
-            <Label layoutX="27.0" layoutY="219.0" prefHeight="17.0" prefWidth="321.0" text="Answer:" />
+            <Label layoutX="140.0" layoutY="219.0" prefHeight="17.0" prefWidth="321.0" text="Answer:" />
             <Label fx:id="questionLabel" alignment="CENTER" layoutX="27.0" layoutY="138.0" prefHeight="17.0" prefWidth="546.0">
                <font>
                   <Font size="30.0" />
@@ -25,8 +26,58 @@
                   <Font size="45.0" />
                </font>
             </Label>
-            <Button fx:id="startButton" layoutX="123.0" layoutY="152.0" mnemonicParsing="false" onAction="#startButtonAction" prefHeight="62.0" prefWidth="354.0" text="Start" />
+            <Button fx:id="startButton" layoutX="143.0" layoutY="152.0" mnemonicParsing="false" onAction="#startButtonAction" prefHeight="62.0" prefWidth="354.0" text="Start" />
+            <Button fx:id="slideButton" mnemonicParsing="false" onAction="#slideButtonAction" prefHeight="45.0" prefWidth="45.0" text="&gt;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
+      <VBox fx:id="menuVBox" layoutX="-80.0" prefHeight="400.0" prefWidth="80.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="145.0" text="Menu">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="400.0" prefWidth="300.0">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/addIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/statusIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/settingsIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/exitIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

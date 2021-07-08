@@ -1,7 +1,7 @@
 package management;
 
 import operation.FileReader;
-import operation.RatioComparator;
+import comparators.RatioComparator;
 import phrases.Dictionary;
 import phrases.Phrase;
 import settings.Settings;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class CardsManager implements Settings {
+public class CardsManager implements Settings, Iterable<Phrase> {
     public static Dictionary phrasalVerbs;
     public static Dictionary nouns;
     public static Dictionary adjectives;
@@ -46,13 +46,20 @@ public class CardsManager implements Settings {
         dictionaryList.add(verbs);
     }
 
-    public void dictionaryStatus() {
+    public void dictionariesStatus() {
         for (Dictionary dictionary : dictionaryList) {
             System.out.println(dictionary.toString());
             Iterator<Phrase> iterator = dictionary.iterator();
             while (iterator.hasNext()) {
                 System.out.println(iterator.next().toString());
             }
+        }
+    }
+
+    public void dictionaryStatus() {
+        Iterator <Phrase> iterator = usedDictionary.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next().toString());
         }
     }
 
@@ -77,11 +84,13 @@ public class CardsManager implements Settings {
         }
     }
 
+
     public Double getActualRatio() {
         return sessionRatio;
     }
 
-    public void addPhrase(Phrase phrase){
+    public void addPhrase(Phrase phrase) {
+        allWords.add(phrase);
         usedDictionary.add(phrase);
     }
 
@@ -99,4 +108,22 @@ public class CardsManager implements Settings {
         dictionaryList.add(usedDictionary);
         sessionRatio = usedDictionary.getTheHighestRatio();
     }
+
+    public Iterator<Phrase> autoSaveIterator(){
+        //Actualization data of AllWords
+        Iterator<Phrase> iterator = usedDictionary.iterator();
+        while (iterator.hasNext()){
+            Phrase phrase = iterator.next();
+            if(allWords.contains(phrase)){
+                allWords.get(phrase).getHistory().setStatistic(phrase.getNmbOfCorrectAnswer(), phrase.getNmbOfAnswer());
+            }
+        }
+        return allWords.iterator();
+    }
+
+    @Override
+    public Iterator<Phrase> iterator() {
+        return usedDictionary.iterator();
+    }
+
 }

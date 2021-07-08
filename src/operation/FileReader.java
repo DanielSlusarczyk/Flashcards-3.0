@@ -1,24 +1,16 @@
 package operation;
 
 import exceptions.IncorrectLineException;
+import exceptions.UnhandledSituationException;
 import management.CardsManager;
+import phrases.Phrase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.PrintWriter;
+import java.util.*;
 
 public class FileReader {
-    //Correct Format Example:
-    //<Ang>home<Pol>dom<Result>1<>2<Grp>N
-    //Types of membership:
-    //PV-Phrasal verb
-    //N- Noun
-    //AD- Adjective
-    //A- Adverb
-    //O- Other
-
     public static void readCards(String inFile) throws FileNotFoundException {
         Scanner readingFile;
         readingFile = new Scanner(new File(inFile));
@@ -65,14 +57,29 @@ public class FileReader {
     }
 
     private static void addToDictionary(String tmpLine, String engWord, List<String> translation, int correctAnswers, int allAnswers) {
-        CardsManager.allWords.addCard(engWord, translation, correctAnswers, allAnswers);
-        switch (tmpLine.substring(tmpLine.indexOf("<Grp>") + 5)) {
-            case "PV" -> CardsManager.phrasalVerbs.addCard(engWord, translation, correctAnswers, allAnswers);
-            case "N" -> CardsManager.nouns.addCard(engWord, translation, correctAnswers, allAnswers);
-            case "AD" -> CardsManager.adjectives.addCard(engWord, translation, correctAnswers, allAnswers);
-            case "A" -> CardsManager.adverbs.addCard(engWord, translation, correctAnswers, allAnswers);
-            case "V" -> CardsManager.verbs.addCard(engWord, translation, correctAnswers, allAnswers);
-            default -> CardsManager.others.addCard(engWord, translation, correctAnswers, allAnswers);
+        String group = tmpLine.substring(tmpLine.indexOf("<Grp>") + 5);
+        CardsManager.allWords.addCard(engWord, translation, correctAnswers, allAnswers, group);
+        switch (group) {
+            case "PV" -> CardsManager.phrasalVerbs.addCard(engWord, translation, correctAnswers, allAnswers, "PV");
+            case "N" -> CardsManager.nouns.addCard(engWord, translation, correctAnswers, allAnswers, "N");
+            case "AD" -> CardsManager.adjectives.addCard(engWord, translation, correctAnswers, allAnswers, "AD");
+            case "A" -> CardsManager.adverbs.addCard(engWord, translation, correctAnswers, allAnswers, "A");
+            case "V" -> CardsManager.verbs.addCard(engWord, translation, correctAnswers, allAnswers, "V");
+            default -> CardsManager.others.addCard(engWord, translation, correctAnswers, allAnswers, "O");
+        }
+    }
+
+    public static void writeCards(String outFile, Iterator<Phrase> iterator) {
+        PrintWriter writingFile;
+        try{
+            writingFile = new PrintWriter(outFile);
+            while(iterator.hasNext()){
+                Phrase phrase = iterator.next();
+                writingFile.println("<Ang>" + phrase.getEngWord() + "<Pol>" + phrase.getTranslationAsOneString() + "<Result>" + phrase.getHistory().getNmbOfCorrectAnswer() + "<>" + phrase.getHistory().getNmbOfAnswer() + "<Grp>" + phrase.getGroup());
+            }
+            writingFile.close();
+        }catch(FileNotFoundException e){
+            System.out.println("It cannot save the file");
         }
     }
 }

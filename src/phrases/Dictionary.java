@@ -16,14 +16,18 @@ public class Dictionary implements Iterable {
         this.name = name;
     }
 
-    public void addNewCard(String engWord, List<String> translation) {
-        Phrase phrase = new Phrase(engWord, translation);
+    public void addNewCard(String engWord, List<String> translation, String group) {
+        Phrase phrase = new Phrase(engWord, translation, group);
         flashcards.add(phrase);
     }
 
-    public void addCard(String engWord, List<String> translation, int nmbOfCorrectAnswer, int nbmOfAnswer) {
-        Phrase phrase = new Phrase(engWord, translation, nmbOfCorrectAnswer, nbmOfAnswer);
+    public void addCard(String engWord, List<String> translation, int nmbOfCorrectAnswer, int nbmOfAnswer, String group) {
+        Phrase phrase = new Phrase(engWord, translation, nmbOfCorrectAnswer, nbmOfAnswer, group);
         flashcards.add(phrase);
+    }
+
+    public void addCards(Dictionary dictionary){
+        flashcards.addAll(dictionary.flashcards);
     }
 
     public double getTheHighestRatio(){
@@ -45,15 +49,22 @@ public class Dictionary implements Iterable {
         for(int i = 0; i < index; i++){
             result = ite.next();
         }
-        flashcards.remove(result);
         return result;
     }
 
     public Phrase get(double ratio){
         for(Phrase phrase : flashcards){
             if(phrase.getRatio() >= ratio){
-                flashcards.remove(phrase);
                 return phrase;
+            }
+        }
+        return null;
+    }
+
+    public Phrase get(Phrase phrase){
+        for(Phrase p : flashcards){
+            if(p.equals(phrase)){
+                return p;
             }
         }
         return null;
@@ -61,6 +72,10 @@ public class Dictionary implements Iterable {
 
     public void add(Phrase phrase){
         flashcards.add(phrase);
+    }
+
+    public boolean contains(Phrase phrase){
+        return flashcards.contains(phrase);
     }
 
     @Override

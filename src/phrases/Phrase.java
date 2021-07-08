@@ -7,33 +7,37 @@ public class Phrase implements Comparable<Phrase> {
     private final String engWord;
     private final List<String> translation;
     private final History history;
+    private String group;
 
-    public Phrase(String engWord, List<String> translation) {
+    public Phrase(String engWord, List<String> translation, String group) {
         this.engWord = engWord;
         this.translation = translation;
         history = new History();
+        this.group = group;
     }
 
-    public Phrase(String engWord, List<String> translation, int nmbOfCorrectAnswer, int nbmOfAnswer) {
+    public Phrase(String engWord, List<String> translation, int nmbOfCorrectAnswer, int nbmOfAnswer, String group) {
         this.engWord = engWord;
         this.translation = translation;
         history = new History(nmbOfCorrectAnswer, nbmOfAnswer);
+        this.group = group;
     }
 
     public Phrase(Phrase phrase, int nmbOfCorrectAnswer, int nbmOfAnswer, History history) {
         this.engWord = phrase.engWord;
         this.translation = phrase.getTranslation();
         this.history = history;
+        this.group = phrase.getGroup();
         history.setStatistic(nmbOfCorrectAnswer, nbmOfAnswer);
     }
 
     public String getTranslationAsOneString() {
-        StringBuilder result = new StringBuilder("| ");
+        StringBuilder result = new StringBuilder();
         for (String x : translation) {
             result.append(x);
-            result.append(" | ");
+            result.append("|");
         }
-        return result.toString();
+        return result.substring(0, result.toString().lastIndexOf("|"));
     }
 
     public String getEngWord() {
@@ -46,6 +50,10 @@ public class Phrase implements Comparable<Phrase> {
 
     public double getRatio() {
         return history.getRatio();
+    }
+
+    public String getGroup(){
+        return group;
     }
 
     public int getNmbOfCorrectAnswer(){
@@ -79,7 +87,7 @@ public class Phrase implements Comparable<Phrase> {
 
     @Override
     public String toString() {
-        return "[Flashcard]: " + engWord + " -> " + getTranslationAsOneString() + "WYNIK: " + getRatio();
+        return "[Flashcard]: " + engWord + " -> " + getTranslationAsOneString() + " WYNIK: " + getRatio();
     }
 
     @Override
@@ -96,10 +104,10 @@ public class Phrase implements Comparable<Phrase> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(engWord, translation.get(0));
+        return Objects.hash(engWord, translation.hashCode());
     }
 
-    private class History {
+    public class History {
         private int nmbOfAnswer;
         private int nmbOfCorrectAnswer;
 
@@ -122,6 +130,14 @@ public class Phrase implements Comparable<Phrase> {
             if (nmbOfAnswer != 0)
                 return (double) nmbOfCorrectAnswer / (double) nmbOfAnswer;
             return 0;
+        }
+
+        public int getNmbOfCorrectAnswer(){
+            return nmbOfCorrectAnswer;
+        }
+
+        public int getNmbOfAnswer() {
+            return nmbOfAnswer;
         }
     }
 }

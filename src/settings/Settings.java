@@ -2,8 +2,8 @@ package settings;
 
 public interface Settings {
     //Window Properties
-    double WIDTH = 600;
-    double HEIGHT = 400;
+    double WIDTH = 700;
+    double HEIGHT = 500;
 
     //Reading Phrases
     String wordPath = "src/source/words/cards.txt";
@@ -16,6 +16,7 @@ public interface Settings {
 
     //General
     long CHECKING_INTERVAL = 1_000_000_00;
+    int AUTO_SAVING_INTERVAL = 1000 * 5;
 
     enum Mode {
         PHRASAL_VERB, NOUN, ADJECTIVE, ADVERB, VERB, ALL, OTHERS;
