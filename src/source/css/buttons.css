@@ -1,12 +1,46 @@
-.button{
+
+#categoryButton{
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 5;
     -fx-background-color: rgba(255, 255, 255, 0);
-    -fx-font-family:"Courier New", Helvetica, Courier New, sans-serif;
+    -fx-font-family: "Arial";
     -fx-font-size: 25px;
-    -fx-text-fill: rgb(255, 255, 255)
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(0, 0, 0, 1)
 }
-.button:hover{
+#categoryButton:hover{
 -fx-background-color: rgba(255, 255, 255, 0.2);
 }
+
+#categoriesButton{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 5;
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-fill: rgba(255, 255, 255, 1)
+}
+#categoriesButton:hover{
+-fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+#answerButton{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 5;
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-font-family:"Courier New", Helvetica, Courier New, sans-serif;
+    -fx-font-size: 25px;
+    -fx-text-fill: rgba(0, 0, 0, 1)
+}
+#answerButton:hover{
+-fx-background-color: rgba(255, 255, 255, 0.0.6);
+}
+
+#transparentButton{
+    -fx-background-color:transparent;
+}
+

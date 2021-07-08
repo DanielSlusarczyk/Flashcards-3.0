@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.TransitionSceneController">
+   <children>
+      <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="TOP" layoutX="197.0" layoutY="108.0" prefHeight="84.0" prefWidth="307.0" text="&lt;Category&gt;">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="amountLabel" alignment="CENTER" layoutX="138.0" layoutY="206.0" prefHeight="121.0" prefWidth="407.0" text="&lt;Amount&gt;">
+         <font>
+            <Font size="80.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -89,6 +89,14 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         return sessionRatio;
     }
 
+    public int getAmount(){
+        return usedDictionary.size();
+    }
+
+    public String getName(){
+        return usedDictionary.getName();
+    }
+
     public void addPhrase(Phrase phrase) {
         allWords.add(phrase);
         usedDictionary.add(phrase);
@@ -97,13 +105,13 @@ public class CardsManager implements Settings, Iterable<Phrase> {
     public void setMode(Mode mode) {
         this.mode = mode;
         switch (mode) {
-            case ALL -> usedDictionary = new Dictionary("Used", new RatioComparator(), allWords);
-            case NOUN -> usedDictionary = new Dictionary("Used", new RatioComparator(), nouns);
-            case VERB -> usedDictionary = new Dictionary("Used", new RatioComparator(), verbs);
-            case ADVERB -> usedDictionary = new Dictionary("Used", new RatioComparator(), adverbs);
-            case ADJECTIVE -> usedDictionary = new Dictionary("Used", new RatioComparator(), adjectives);
-            case PHRASAL_VERB -> usedDictionary = new Dictionary("Used", new RatioComparator(), phrasalVerbs);
-            case OTHERS -> usedDictionary = new Dictionary("Used", new RatioComparator(), others);
+            case ALL -> usedDictionary = new Dictionary("All", new RatioComparator(), allWords);
+            case NOUN -> usedDictionary = new Dictionary("Noun", new RatioComparator(), nouns);
+            case VERB -> usedDictionary = new Dictionary("Verb", new RatioComparator(), verbs);
+            case ADVERB -> usedDictionary = new Dictionary("Adverb", new RatioComparator(), adverbs);
+            case ADJECTIVE -> usedDictionary = new Dictionary("Adjective", new RatioComparator(), adjectives);
+            case PHRASAL_VERB -> usedDictionary = new Dictionary("Phrasal Verb", new RatioComparator(), phrasalVerbs);
+            case OTHERS -> usedDictionary = new Dictionary("Others", new RatioComparator(), others);
         }
         dictionaryList.add(usedDictionary);
         sessionRatio = usedDictionary.getTheHighestRatio();

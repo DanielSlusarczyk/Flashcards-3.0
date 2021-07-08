@@ -26,8 +26,6 @@ public class CardsController implements Initializable, Settings{
     @FXML
     TextField answerTextField;
     @FXML
-    Button startButton;
-    @FXML
     Button addButton;
     @FXML
     Button slideButton;
@@ -68,11 +66,12 @@ public class CardsController implements Initializable, Settings{
             }
         };
         menuTranslation = new TranslateTransition(Duration.millis(500), menuVBox);
-        slideButtonTranslation = new TranslateTransition(Duration.millis(1000), slideButton);
+        slideButtonTranslation = new TranslateTransition(Duration.millis(500), slideButton);
         slideButtonTranslation.setFromX(0);
         slideButtonTranslation.setToX(80);
         menuTranslation.setFromX(0);
         menuTranslation.setToX(80);
+        startAction();
     }
 
     private Answer checkAnswer(String correct, String answer){
@@ -82,9 +81,7 @@ public class CardsController implements Initializable, Settings{
         return Answer.INCORRECT;
     }
 
-    @FXML
-    private void startButtonAction(){
-        startButton.setVisible(false);
+    private void startAction(){
         cardsManager.dictionariesStatus();
         phrase = cardsManager.getNextPhrase();
         questionLabel.setText(phrase.getTranslationAsOneString());
@@ -100,7 +97,6 @@ public class CardsController implements Initializable, Settings{
             menuTranslation.play();
             slideButtonTranslation.setRate(-1);
             slideButtonTranslation.play();
-            slideButton.setText(">");
             menuShown = false;
         }
         else {
@@ -108,7 +104,6 @@ public class CardsController implements Initializable, Settings{
             menuTranslation.play();
             slideButtonTranslation.setRate(1);
             slideButtonTranslation.play();
-            slideButton.setText("<");
             menuShown = true;
         }
     }

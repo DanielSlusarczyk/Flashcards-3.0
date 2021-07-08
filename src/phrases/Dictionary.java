@@ -70,6 +70,9 @@ public class Dictionary implements Iterable {
         return null;
     }
 
+    public String getName(){
+        return name;
+    }
     public void add(Phrase phrase){
         flashcards.add(phrase);
     }
