@@ -131,8 +131,6 @@ public class Controller implements Initializable, Settings {
     }
 
     private void changeScene() {
-        //Load new FXML and assign it to scene
-
         FadeTransition paneFadeInRootPane = new FadeTransition(Duration.millis(1500), rootPane);
         paneFadeInRootPane.setFromValue(1);
         paneFadeInRootPane.setToValue(0);

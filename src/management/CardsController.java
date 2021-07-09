@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import operation.AutoSaveThread;
 import phrases.Phrase;
@@ -21,7 +20,9 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class CardsController implements Initializable, Settings{
+public class CardsController implements Initializable, Settings {
+    private static CardsManager cardsManager;
+    private static AutoSaveThread autoSaveThread;
     @FXML
     Label questionLabel;
     @FXML
@@ -34,38 +35,23 @@ public class CardsController implements Initializable, Settings{
     Pane menuPane;
     @FXML
     AnchorPane rootPane;
-
     private TranslateTransition menuTranslation;
     private TranslateTransition slideButtonTranslation;
-
-    private long lastTime;
-    private static CardsManager cardsManager;
+    private long lastTime, lastTimeOfInit;
     private AnimationTimer timer;
-    private static AutoSaveThread autoSaveThread;
     private Phrase phrase;
     private boolean menuShown;
+    private long startAnswering, endAnswering;
+
+    public static AutoSaveThread getThread() {
+        return autoSaveThread;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cardsManager = Controller.getCardsManager();
         autoSaveThread = new AutoSaveThread(AUTO_SAVING_INTERVAL, cardsManager);
-        timer = new AnimationTimer() {
-            @Override
-            public void handle(long time) {
-                if(time - lastTime >= CHECKING_INTERVAL){
-                    if(checkAnswer(phrase.getEngWord(), answerTextField.getText()) == Answer.CORRECT){
-                        phrase.getHistory().setStatistic(phrase.getNmbOfCorrectAnswer() + 1, phrase.getNmbOfAnswer() + 1);
-                        cardsManager.dictionaryStatus();
-                        cardsManager.actualizeRatio(Answer.CORRECT);
-                        phrase = cardsManager.getNextPhrase();
-                        questionLabel.setText(phrase.getTranslationAsOneString());
-                        answerTextField.clear();
-                        System.out.println("[INFO]Poprawna odpowiedź. Współczynnik: " + cardsManager.getActualRatio());
-                    }
-                    lastTime = time;
-                }
-            }
-        };
+        setTimer();
         menuTranslation = new TranslateTransition(Duration.millis(500), menuPane);
         slideButtonTranslation = new TranslateTransition(Duration.millis(500), slideButton);
         slideButtonTranslation.setFromX(0);
@@ -75,35 +61,66 @@ public class CardsController implements Initializable, Settings{
         startAction();
     }
 
-    private Answer checkAnswer(String correct, String answer){
-        if(correct.equalsIgnoreCase(answer)){
+    private Answer checkAnswer(String correct, String answer) {
+        if (correct.equalsIgnoreCase(answer) && !answer.equals("")) {
             return Answer.CORRECT;
         }
         return Answer.INCORRECT;
     }
 
-    private void startAction(){
-        cardsManager.dictionariesStatus();
-        phrase = cardsManager.getNextPhrase();
-        questionLabel.setText(phrase.getTranslationAsOneString());
+    private void startAction() {
         autoSaveThread.start();
         timer.start();
     }
 
-    public static AutoSaveThread getThread(){
-        return autoSaveThread;
+    private void setTimer() {
+        timer = new AnimationTimer() {
+            public void init(long time) {
+                phrase = cardsManager.getNextPhrase();
+                if (phrase == null) {
+                    System.out.println("[WARNING]The phrase is not found");
+                } else {
+                    questionLabel.setText(phrase.getTranslationAsOneString());
+                    startAnswering = time;
+                }
+            }
+
+            @Override
+            public void handle(long time) {
+                if (time - lastTimeOfInit >= INIT_INTERVAL && phrase == null) {
+                    init(time);
+                    lastTimeOfInit = time;
+                }
+                if (time - lastTime >= CHECKING_INTERVAL && phrase != null) {
+                    if (checkAnswer(phrase.getEngWord(), answerTextField.getText()) == Answer.CORRECT) {
+                        endAnswering = time;
+                        correctAnswerAction();
+                    }
+                    lastTime = time;
+                }
+            }
+        };
+    }
+
+    private void correctAnswerAction() {
+        phrase.getHistory().setStatistic(phrase.getNmbOfCorrectAnswer() + 1, phrase.getNmbOfAnswer() + 1);
+        cardsManager.dictionaryStatus();
+        cardsManager.actualizeRatio(Answer.CORRECT);
+        phrase = cardsManager.getNextPhrase();
+        questionLabel.setText(phrase.getTranslationAsOneString());
+        answerTextField.clear();
+        System.out.println("[INFO]Poprawna odpowiedź. Współczynnik: " + cardsManager.getActualRatio());
     }
 
     @FXML
-    private void slideButtonAction(){
-        if(menuShown){
+    private void slideButtonAction() {
+        if (menuShown) {
             menuTranslation.setRate(-1);
             menuTranslation.play();
             slideButtonTranslation.setRate(-1);
             slideButtonTranslation.play();
             menuShown = false;
-        }
-        else {
+        } else {
             menuTranslation.setRate(1);
             menuTranslation.play();
             slideButtonTranslation.setRate(1);

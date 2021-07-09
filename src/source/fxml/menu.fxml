@@ -18,7 +18,7 @@
                <children>
                   <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/hexagon.png" />
+                        <Image url="@../img/blueHexagon.png" />
                      </image>
                   </ImageView>
                   <Button id="categoriesButton" fx:id="buttonN" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Noun" textAlignment="CENTER">
@@ -27,11 +27,11 @@
                      </cursor></Button>
                </children>
             </Pane>
-            <Pane fx:id="p1" layoutX="319.0" layoutY="-23.0" prefHeight="240.0" prefWidth="240.0" visible="false">
+            <Pane fx:id="p1" layoutX="320.0" layoutY="-23.0" prefHeight="240.0" prefWidth="240.0" visible="false">
                <children>
                   <ImageView fitHeight="240.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/hexagon.png" />
+                        <Image url="@../img/yellowHexagon.png" />
                      </image>
                   </ImageView>
                   <Button id="categoriesButton" fx:id="buttonV" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Verb">
@@ -44,7 +44,7 @@
                <children>
                   <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/hexagon.png" />
+                        <Image url="@../img/purpleHexagon.png" />
                      </image>
                   </ImageView>
                   <Button id="categoriesButton" fx:id="buttonAd" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Adjective">
@@ -53,11 +53,11 @@
                      </cursor></Button>
                </children>
             </Pane>
-            <Pane fx:id="p2" layoutX="406.0" layoutY="130.0" prefHeight="240.0" prefWidth="240.0" stylesheets="@../css/buttons.css" visible="false">
+            <Pane fx:id="p2" layoutX="408.0" layoutY="130.0" prefHeight="240.0" prefWidth="240.0" stylesheets="@../css/buttons.css" visible="false">
                <children>
                   <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/hexagon.png" />
+                        <Image url="@../img/blueHexagon.png" />
                      </image>
                   </ImageView>
                   <Button id="categoriesButton" fx:id="buttonPV" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Phrasal Verb" textAlignment="CENTER" wrapText="true">
@@ -66,11 +66,11 @@
                      </cursor></Button>
                </children>
             </Pane>
-            <Pane fx:id="p4" layoutX="141.0" layoutY="284.0" prefHeight="240.0" prefWidth="240.0" visible="false">
+            <Pane fx:id="p4" layoutX="139.0" layoutY="284.0" prefHeight="240.0" prefWidth="240.0" visible="false">
                <children>
                   <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/hexagon.png" />
+                        <Image url="@../img/yellowHexagon.png" />
                      </image>
                   </ImageView>
                   <Button id="categoriesButton" fx:id="buttonA" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Adverb">
@@ -83,7 +83,7 @@
                <children>
                   <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/hexagon.png" />
+                        <Image url="@../img/purpleHexagon.png" />
                      </image>
                   </ImageView>
                   <Button id="categoriesButton" fx:id="buttonO" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Other" textAlignment="CENTER">

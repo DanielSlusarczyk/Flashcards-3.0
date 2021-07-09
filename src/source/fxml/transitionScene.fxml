@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.TransitionSceneController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.TransitionSceneController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/cardsBackground.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="TOP" layoutX="197.0" layoutY="137.0" prefHeight="84.0" prefWidth="307.0" text="&lt;Category&gt;" textFill="WHITE">
+      <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="TOP" layoutX="197.0" layoutY="137.0" prefHeight="84.0" prefWidth="307.0" text="&lt;Category&gt;">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="amountLabel" alignment="CENTER" layoutX="147.0" layoutY="221.0" prefHeight="121.0" prefWidth="407.0" text="&lt;Amount&gt;" textFill="WHITE">
+      <Label fx:id="amountLabel" alignment="CENTER" layoutX="89.0" layoutY="221.0" prefHeight="141.0" prefWidth="522.0" text="&lt;Amount&gt;">
          <font>
-            <Font size="80.0" />
+            <Font size="96.0" />
          </font>
       </Label>
    </children>

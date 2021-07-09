@@ -2,6 +2,7 @@ package management;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
@@ -18,9 +19,11 @@ import settings.Settings;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddPhraseController implements Initializable, Settings {
@@ -96,6 +99,15 @@ public class AddPhraseController implements Initializable, Settings {
         HBox.setMargin(translationButton, new Insets(0, 2, 0, 2));
     }
 
+    @FXML
+    private void returnButtonAction(){
+        try {
+            AnchorPane cardsPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/cards.fxml")));
+            rootPane.getChildren().setAll(cardsPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void addButtonAction() {
@@ -125,8 +137,6 @@ public class AddPhraseController implements Initializable, Settings {
                 translationLabel.setId("addPhraseLabelIncorrect");
             }
         }
-
-
     }
 
 

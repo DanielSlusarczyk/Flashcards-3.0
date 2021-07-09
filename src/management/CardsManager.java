@@ -65,14 +65,14 @@ public class CardsManager implements Settings, Iterable<Phrase> {
 
     public Phrase getNextPhrase() {
         phraseCounter++;
-        if (phraseCounter % AMOUNT_OF_CARD_BETWEEN_RANDOM == 0) {
-            System.out.println("[INFO]Daje losową fiszke");
+        if (phraseCounter % AMOUNT_OF_CARD_BETWEEN_RANDOM == 0 && usedDictionary.size() != 0) {
+            System.out.println("[INFO]Random Phrase");
             Random random = new Random();
             int number = random.nextInt(usedDictionary.size());
             return usedDictionary.get(number);
         }
         Phrase result = usedDictionary.get(sessionRatio);
-        System.out.println("[INFO]Daje fiszke z współczynnikiem równym najwyższemu");
+        System.out.println("[INFO]Phrase with the highest ratio");
         return result;
     }
 

@@ -15,7 +15,8 @@ public interface Settings {
     double RATIO_INCREASE_FOR_TYPO = 0.01;
 
     //General
-    long CHECKING_INTERVAL = 1_000_000_00;
+    long CHECKING_INTERVAL = 100_000_000;
+    long INIT_INTERVAL = 1_000_000_000;
     int AUTO_SAVING_INTERVAL = 1000 * 5;
 
     enum Mode {
