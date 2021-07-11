@@ -5,6 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.CardsController">
@@ -14,9 +15,19 @@
             <Image url="@../img/cardsBackground.png" />
          </image>
       </ImageView>
+      <AnchorPane prefHeight="500.0" prefWidth="700.0">
+         <children>
+            <Line fx:id="line1" endX="27.0" endY="201.0" layoutX="50.0" layoutY="50.0" startX="162.0" startY="439.0" stroke="#ffc99680" strokeWidth="3.0" visible="false" />
+            <Line fx:id="line2" endX="214.0" endY="12.292892456054688" startX="76.0" startY="250.0" stroke="#3f95ab80" strokeWidth="3.0" visible="false" />
+            <Line fx:id="line3" endX="196.0" endY="-7.0" layoutX="20.0" layoutY="20.0" startX="470.0" startY="-7.0" stroke="#ff837580" strokeWidth="3.0" visible="false" />
+            <Line fx:id="line4" endX="449.0" endY="-28.0" layoutX="40.0" layoutY="40.0" startX="585.0" startY="211.0" stroke="#ffc99680" strokeWidth="3.0" visible="false" />
+            <Line fx:id="line5" endX="614.0" endY="242.0" layoutX="10.0" layoutY="10.0" startX="478.0" startY="478.0" stroke="#3f95ab80" strokeWidth="3.0" visible="false" />
+            <Line fx:id="line6" endX="182.0" endY="459.0" layoutX="30.0" layoutY="30.0" startX="458.0" startY="459.0" stroke="#ff837580" strokeWidth="3.0" visible="false" />
+         </children>
+      </AnchorPane>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0">
          <children>
-            <TextField fx:id="answerTextField" alignment="CENTER" layoutX="92.0" layoutY="320.0" prefHeight="66.0" prefWidth="540.0">
+            <TextField fx:id="answerTextField" alignment="CENTER" layoutX="105.0" layoutY="329.0" prefHeight="66.0" prefWidth="491.0">
                <font>
                   <Font name="Microsoft YaHei" size="30.0" />
                </font>
@@ -26,7 +37,12 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button id="answerButton" layoutX="448.0" layoutY="407.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="175.0" stylesheets="@../css/buttons.css" text="Check" />
+            <Label fx:id="answerLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="278.0" prefHeight="17.0" prefWidth="546.0" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button id="answerButton" fx:id="showButton" layoutX="263.0" layoutY="410.0" mnemonicParsing="false" onAction="#showButtonAction" prefHeight="50.0" prefWidth="175.0" stylesheets="@../css/buttons.css" text="Show" />
             <Button id="transparentButton" fx:id="slideButton" mnemonicParsing="false" onAction="#slideButtonAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/buttons.css">
                <font>
                   <Font size="20.0" />
@@ -68,7 +84,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button id="transparentButton" mnemonicParsing="false" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
+                  <Button id="transparentButton" mnemonicParsing="false" onAction="#statsButtonAction" prefHeight="400.0" prefWidth="300.0" stylesheets="@../css/buttons.css">
                      <graphic>
                         <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                            <image>

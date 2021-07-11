@@ -1,16 +1,21 @@
 package operation;
 
 import exceptions.IncorrectLineException;
-import exceptions.UnhandledSituationException;
 import management.CardsManager;
 import phrases.Phrase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class FileReader {
+    private static List<String> dateList;
+    private static List<Double> timeList;
+
     public static void readCards(String inFile) throws FileNotFoundException {
         Scanner readingFile;
         readingFile = new Scanner(new File(inFile));
@@ -70,15 +75,51 @@ public class FileReader {
 
     public static void writeCards(String outFile, Iterator<Phrase> iterator) {
         PrintWriter writingFile;
-        try{
+        try {
             writingFile = new PrintWriter(outFile);
-            while(iterator.hasNext()){
+            while (iterator.hasNext()) {
                 Phrase phrase = iterator.next();
-                writingFile.println("<Ang>" + phrase.getEngWord() + "<Pol>" + phrase.getTranslationAsOneString() + "<Result>" + phrase.getHistory().getNmbOfCorrectAnswer() + "<>" + phrase.getHistory().getNmbOfAnswer() + "<Grp>" + phrase.getGroup());
+                writingFile.println("<Ang>" + phrase.getEngWord() + "<Pol>" + phrase.getTranslationAsOneString() + "<Result>" + phrase.getNmbOfCorrectAnswer() + "<>" + phrase.getNmbOfAnswer() + "<Grp>" + phrase.getGroup());
             }
             writingFile.close();
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("It cannot save the file");
         }
+    }
+
+    public static void writeCardsStats(Phrase phrase, Long currentTime, Double time) {
+        PrintWriter printWriter;
+        try {
+            printWriter = new PrintWriter(new FileOutputStream("src/source/words/stats/[" + phrase.hashCode() + "]" + phrase.getEngWord() + ".txt", true));
+            printWriter.append("<Date>").append(String.valueOf(currentTime)).append("<Time>").append(String.valueOf(time));
+            printWriter.println();
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void readPhraseStats(Phrase phrase){
+        timeList = new ArrayList<>();
+        dateList = new ArrayList<>();
+        Scanner readingFile;
+        try {
+            readingFile = new Scanner(new File("src/source/words/stats/[" + phrase.hashCode() + "]" + phrase.getEngWord() + ".txt"));
+            while (readingFile.hasNextLine()) {
+                String tmpLine = readingFile.nextLine();
+                dateList.add(tmpLine.substring(tmpLine.indexOf("<Date>") + 6, tmpLine.indexOf("<Time>")));
+                timeList.add(Double.parseDouble(tmpLine.substring(tmpLine.indexOf("<Time>") + 6)));
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("[INFO]There is no stats of Phrase");
+        }
+    }
+
+    public static List<String> getDateList(){
+        return dateList;
+    }
+
+    public static List<Double> getTimeList() {
+        return timeList;
     }
 }

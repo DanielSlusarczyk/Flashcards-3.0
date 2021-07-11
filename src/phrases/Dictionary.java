@@ -11,6 +11,7 @@ public class Dictionary implements Iterable {
         flashcards.addAll(dictionary.flashcards);
         this.name = name;
     }
+
     public Dictionary(String name) {
         flashcards = new TreeSet<>();
         this.name = name;
@@ -26,63 +27,75 @@ public class Dictionary implements Iterable {
         flashcards.add(phrase);
     }
 
-    public void addCards(Dictionary dictionary){
+    public void addCards(Dictionary dictionary) {
         flashcards.addAll(dictionary.flashcards);
     }
 
-    public double getTheHighestRatio(){
+    public double getTheHighestRatio() {
         double result = 0;
-        for(Phrase phrase : flashcards){
-            if(phrase.getRatio() > result)
+        for (Phrase phrase : flashcards) {
+            if (phrase.getRatio() > result)
                 result = phrase.getRatio();
         }
         return result;
     }
 
-    public int size(){
+    public int size() {
         return flashcards.size();
     }
 
-    public Phrase get(int index){
+    public Phrase get(int index) {
         Iterator<Phrase> ite = iterator();
         Phrase result = null;
-        for(int i = 0; i < index; i++){
+        for (int i = 0; i <= index; i++) {
             result = ite.next();
         }
         return result;
     }
 
-    public Phrase get(double ratio){
-        for(Phrase phrase : flashcards){
-            if(phrase.getRatio() >= ratio){
-                return phrase;
+    public Phrase get(double ratio) {
+        double convergence = 1;
+        List<Phrase> properPhrases = new ArrayList<>();
+        Phrase result = null;
+        for (Phrase phrase : flashcards) {
+            double value = Math.abs(phrase.getRatio() - ratio);
+            if (value <= convergence) {
+                result = phrase;
+                if (value == 0) {
+                    properPhrases.add(phrase);
+                }
+                convergence = value;
             }
         }
-        return null;
+        if (properPhrases.size() != 0) {
+            return properPhrases.get(new Random().nextInt(properPhrases.size()));
+        }
+        return result;
     }
 
-    public Phrase get(Phrase phrase){
-        for(Phrase p : flashcards){
-            if(p.equals(phrase)){
+    public Phrase get(Phrase phrase) {
+        for (Phrase p : flashcards) {
+            if (p.equals(phrase)) {
                 return p;
             }
         }
         return null;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void add(Phrase phrase){
+
+    public void add(Phrase phrase) {
         flashcards.add(phrase);
     }
 
-    public boolean contains(Phrase phrase){
+    public boolean contains(Phrase phrase) {
         return flashcards.contains(phrase);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "[DICTIONARY]: " + name;
     }
 

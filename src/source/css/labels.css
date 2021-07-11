@@ -1,7 +1,12 @@
 #addPhraseLabel {
     -fx-text-fill: rgb(255, 255, 255);
 }
+
 #addPhraseLabelIncorrect {
     -fx-text-fill: rgb(158, 0, 0);
 }
 
+#tabPaneLabel{
+    -fx-font-size: 15px;
+    -fx-text-fill: rgb(255, 255, 255)
+}

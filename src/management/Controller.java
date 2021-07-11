@@ -46,7 +46,6 @@ public class Controller implements Initializable, Settings {
         }
         System.out.println("[INFO]Fiszki wczytane");
         setActionForButtons();
-
     }
 
     private void setActionForButtons() {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="350" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.DetailsController">
+   <children>
+      <Label fx:id="titleLabel" prefHeight="59.0" prefWidth="500.0" text="Label">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Label>
+      <Label fx:id="subtitleLabel" layoutY="64.0" prefHeight="29.0" prefWidth="500.0" text="Label">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="allLabel" alignment="CENTER_RIGHT" layoutX="461.0" layoutY="94.0" prefHeight="30.0" prefWidth="232.0" text="Label" textAlignment="RIGHT">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="correctLabel" alignment="CENTER_RIGHT" layoutX="461.0" layoutY="64.0" prefHeight="30.0" prefWidth="232.0" text="Label" textAlignment="RIGHT">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

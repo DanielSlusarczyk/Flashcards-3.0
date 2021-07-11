@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.StatsController">
+    <children>
+        <ImageView fitHeight="501.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/cardsBackground.png" />
+            </image>
+        </ImageView>
+      <AnchorPane fx:id="detailsAnchorPane" prefHeight="350.0" prefWidth="700.0" />
+        <TabPane fx:id="tabPane" layoutY="100.0" prefHeight="400.0" prefWidth="700.0" stylesheets="@../css/tabPane.css" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="A-Z">
+                    <content>
+                        <AnchorPane fx:id="AZAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <ScrollPane fx:id="AZScrollPane" hbarPolicy="NEVER" prefHeight="350.0" prefWidth="700.0" stylesheets="@../css/scrollPane.css" />
+                     </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Z-A">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane fx:id="ZAScrollPane" hbarPolicy="NEVER" prefHeight="350.0" prefWidth="700.0" style="-fx-background-color: transparent;" stylesheets="@../css/scrollPane.css" />
+                     </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Ratio &lt;-">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane fx:id="ratioScrollPane" hbarPolicy="NEVER" prefHeight="350.0" prefWidth="700.0" style="-fx-background-color: transparent;" stylesheets="@../css/scrollPane.css" />
+                     </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Ratio -&gt;">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane fx:id="reverseRatioScrollPane" hbarPolicy="NEVER" prefHeight="350.0" prefWidth="700.0" style="-fx-background-color: transparent;" stylesheets="@../css/scrollPane.css" />
+                     </children></AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Button id="transparentButton" fx:id="returnButton" layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButtonAction" prefHeight="48.0" prefWidth="48.0" stylesheets="@../css/buttons.css" text="Button">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../img/returnIcon.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+    </children>
+</AnchorPane>

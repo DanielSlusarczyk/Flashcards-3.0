@@ -7,33 +7,36 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" prefHeight="498.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.AddPhraseController">
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.AddPhraseController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="700.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/cardsBackground.png" />
          </image>
       </ImageView>
       <Button id="answerButton" fx:id="addButton" layoutX="256.0" layoutY="416.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="50.0" prefWidth="175.0" stylesheets="@../css/buttons.css" text="Add" />
-      <TextField fx:id="polishTextField" alignment="CENTER" layoutX="102.0" layoutY="142.0" prefHeight="45.0" prefWidth="482.0">
+      <TextField fx:id="polishTextField" alignment="CENTER" layoutX="102.0" layoutY="128.0" prefHeight="45.0" prefWidth="482.0">
          <font>
             <Font size="20.0" />
          </font></TextField>
-      <TextField fx:id="englishTextField" alignment="CENTER" layoutX="102.0" layoutY="267.0" prefHeight="45.0" prefWidth="482.0">
+      <TextField fx:id="englishTextField" alignment="CENTER" layoutX="102.0" layoutY="250.0" prefHeight="45.0" prefWidth="482.0">
          <font>
             <Font size="20.0" />
          </font></TextField>
-      <Label id="addPhraseLabel" fx:id="englishLabel" layoutX="102.0" layoutY="234.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="English:" textFill="WHITE">
+      <Label id="addPhraseLabel" fx:id="englishLabel" layoutX="102.0" layoutY="217.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="English:" textFill="WHITE">
          <font>
             <Font name="Roboto Thin" size="20.0" />
          </font></Label>
-      <Label id="addPhraseLabel" fx:id="translationLabel" layoutX="102.0" layoutY="109.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="Polish:" textFill="WHITE">
+      <Label id="addPhraseLabel" fx:id="translationLabel" layoutX="102.0" layoutY="95.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="Polish:" textFill="WHITE">
          <font>
             <Font name="Roboto Thin" size="20.0" />
          </font>
       </Label>
-      <HBox fx:id="translationHBox" layoutX="110.0" layoutY="193.0" prefHeight="31.0" prefWidth="482.0" style="-fx-background-color: transparent;" />
-      <Button id="transparentButton" fx:id="addTranslationButton" layoutX="598.0" layoutY="141.0" mnemonicParsing="false" onAction="#addTranslationButtonAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/buttons.css">
+      <HBox fx:id="translationHBox" layoutX="106.0" layoutY="180.0" prefHeight="31.0" prefWidth="482.0" style="-fx-background-color: transparent;" />
+      <Button id="transparentButton" fx:id="addTranslationButton" layoutX="584.0" layoutY="127.0" mnemonicParsing="false" onAction="#addTranslationButtonAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/buttons.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -43,10 +46,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-         </graphic>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </graphic></Button>
       <Label id="addPhraseLabel" fx:id="groupLabel" layoutX="102.0" layoutY="325.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="Group:" textFill="WHITE">
          <font>
             <Font name="Roboto Thin" size="20.0" />
@@ -95,12 +95,12 @@
                </cursor></Button>
          </children>
       </HBox>
-      <Label id="addPhraseLabel" fx:id="translationLabel1" alignment="CENTER" layoutX="183.0" layoutY="60.0" prefHeight="66.0" prefWidth="321.0" stylesheets="@../css/labels.css" text="ADD PHRASE:" textAlignment="CENTER" textFill="WHITE">
+      <Label id="addPhraseLabel" fx:id="translationLabel1" alignment="CENTER" layoutX="183.0" layoutY="29.0" prefHeight="66.0" prefWidth="321.0" stylesheets="@../css/labels.css" text="ADD PHRASE:" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Roboto Thin" size="30.0" />
+            <Font size="30.0" />
          </font>
       </Label>
-      <Button id="transparentButton" layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButtonAction" prefHeight="48.0" prefWidth="48.0" stylesheets="@../css/buttons.css" text="Button">
+      <Button id="transparentButton" layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButtonAction" prefHeight="48.0" prefWidth="48.0" stylesheets="@../css/buttons.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

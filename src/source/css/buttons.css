@@ -32,11 +32,14 @@
     -fx-text-fill: rgba(255, 255, 255, 1);
 }
 #answerButton:hover{
--fx-background-color: rgba(255, 255, 255, 0.0.6);
+-fx-background-color: rgba(255, 255, 255, 0.6);
 }
 
 #transparentButton{
     -fx-background-color:transparent;
+}
+#transparentButton: hover{
+    -fx-background-color:rgba(255, 255, 255, 0.2);
 }
 
 #translationButton{
@@ -62,6 +65,7 @@
     -fx-border-width: 0;
     -fx-background-radius: 5;
     -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-font-weight: bold;
     -fx-font-size: 15px;
     -fx-text-fill: rgba(255, 255, 255, 1);
 }
@@ -74,5 +78,17 @@
     -fx-font-size: 15px;
     -fx-font-weight: bold;
     -fx-text-fill: rgba(255, 255, 255, 1);
+}
+
+#detailButton{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 5;
+    -fx-background-color: rgba(255, 132, 116, 0.6);
+    -fx-font-size: 15px;
+    -fx-text-fill: rgba(255, 255, 255, 1);
+}
+#detailButton : hover{
+    -fx-font-weight: bold;
 }
 

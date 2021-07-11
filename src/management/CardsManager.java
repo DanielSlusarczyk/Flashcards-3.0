@@ -1,5 +1,6 @@
 package management;
 
+import exceptions.UnhandledSituationException;
 import operation.FileReader;
 import comparators.RatioComparator;
 import phrases.Dictionary;
@@ -46,6 +47,31 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         dictionaryList.add(verbs);
     }
 
+    @Override
+    public Iterator<Phrase> iterator() {
+        return usedDictionary.iterator();
+    }
+
+    public Phrase getNextPhrase() {
+        try {
+            if (usedDictionary == null || usedDictionary.size() == 0) {
+                throw new UnhandledSituationException("[WANING]The used dictionary contains no phrases!");
+            }
+        }catch (UnhandledSituationException exception){
+            exception.printStackTrace();
+        }
+        //Random phrase every AMOUNT_OF_CARD_BETWEEN_RANDOM
+        phraseCounter++;
+        if (phraseCounter % AMOUNT_OF_CARDS_BETWEEN_RANDOM == 0) {
+            int number = new Random().nextInt(usedDictionary.size());
+            System.out.println("[INFO]Random phrase: Number:" + number);
+            return usedDictionary.get(number);
+        }
+        System.out.println("[INFO]Phrase with the closest convergence");
+        Phrase result = usedDictionary.get(sessionRatio);
+        return result;
+    }
+
     public void dictionariesStatus() {
         for (Dictionary dictionary : dictionaryList) {
             System.out.println(dictionary.toString());
@@ -56,25 +82,6 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         }
     }
 
-    public void dictionaryStatus() {
-        Iterator <Phrase> iterator = usedDictionary.iterator();
-        while(iterator.hasNext()){
-            System.out.println(iterator.next().toString());
-        }
-    }
-
-    public Phrase getNextPhrase() {
-        phraseCounter++;
-        if (phraseCounter % AMOUNT_OF_CARD_BETWEEN_RANDOM == 0 && usedDictionary.size() != 0) {
-            System.out.println("[INFO]Random Phrase");
-            Random random = new Random();
-            int number = random.nextInt(usedDictionary.size());
-            return usedDictionary.get(number);
-        }
-        Phrase result = usedDictionary.get(sessionRatio);
-        System.out.println("[INFO]Phrase with the highest ratio");
-        return result;
-    }
 
     public void actualizeRatio(Answer answer) {
         switch (answer) {
@@ -97,14 +104,10 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         return usedDictionary.getName();
     }
 
-    public void addNewCard(String engWord, List<String> translation, String group){
-
+    public Dictionary getAllWords(){
+        return allWords;
     }
 
-    public void addPhrase(Phrase phrase) {
-        allWords.add(phrase);
-        usedDictionary.add(phrase);
-    }
 
     public void setMode(Mode mode) {
         this.mode = mode;
@@ -122,20 +125,15 @@ public class CardsManager implements Settings, Iterable<Phrase> {
     }
 
     public Iterator<Phrase> autoSaveIterator(){
-        //Actualization data of AllWords
+        //Actualize allWords by usedDictionary
         Iterator<Phrase> iterator = usedDictionary.iterator();
         while (iterator.hasNext()){
             Phrase phrase = iterator.next();
             if(allWords.contains(phrase)){
-                allWords.get(phrase).getHistory().setStatistic(phrase.getNmbOfCorrectAnswer(), phrase.getNmbOfAnswer());
+                allWords.get(phrase).setStatistic(phrase.getNmbOfCorrectAnswer(), phrase.getNmbOfAnswer());
             }
         }
         return allWords.iterator();
-    }
-
-    @Override
-    public Iterator<Phrase> iterator() {
-        return usedDictionary.iterator();
     }
 
 }

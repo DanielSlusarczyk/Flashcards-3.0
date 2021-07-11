@@ -67,7 +67,7 @@ public class AddPhraseController implements Initializable, Settings {
                     case "Phrasal Verb" -> group = "PV";
                     case "Verb" -> group = "V";
                     case "Noun" -> group = "N";
-                    case "Adjective" -> group = "Ad";
+                    case "Adjective" -> group = "AD";
                     case "Adverb" -> group = "A";
                     case "Others" -> group = "O";
                 }
