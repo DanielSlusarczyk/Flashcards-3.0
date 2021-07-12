@@ -4,10 +4,10 @@ import exceptions.IncorrectLineException;
 import management.CardsManager;
 import phrases.Phrase;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -90,7 +90,7 @@ public class FileReader {
     public static void writeCardsStats(Phrase phrase, Long currentTime, Double time) {
         PrintWriter printWriter;
         try {
-            printWriter = new PrintWriter(new FileOutputStream("src/source/words/stats/[" + phrase.hashCode() + "]" + phrase.getEngWord() + ".txt", true));
+            printWriter = new PrintWriter(new FileOutputStream(getPath(phrase), true));
             printWriter.append("<Date>").append(String.valueOf(currentTime)).append("<Time>").append(String.valueOf(time));
             printWriter.println();
             printWriter.close();
@@ -99,17 +99,33 @@ public class FileReader {
         }
     }
 
+    public static String getPath(Phrase phrase){
+        return "src/source/words/stats/[" + phrase.hashCode() + "]" + phrase.getEngWord() + ".txt";
+    }
+
+    public static boolean editName(String oldPath, String newPath){
+        Path source = Paths.get(oldPath);
+        Path target = Paths.get(newPath);
+        try {
+            Files.move(source, target);
+        } catch (IOException e) {
+            return false;
+        }
+        return true;
+    }
+
     public static void readPhraseStats(Phrase phrase){
         timeList = new ArrayList<>();
         dateList = new ArrayList<>();
         Scanner readingFile;
         try {
-            readingFile = new Scanner(new File("src/source/words/stats/[" + phrase.hashCode() + "]" + phrase.getEngWord() + ".txt"));
+            readingFile = new Scanner(new File(getPath(phrase)));
             while (readingFile.hasNextLine()) {
                 String tmpLine = readingFile.nextLine();
                 dateList.add(tmpLine.substring(tmpLine.indexOf("<Date>") + 6, tmpLine.indexOf("<Time>")));
                 timeList.add(Double.parseDouble(tmpLine.substring(tmpLine.indexOf("<Time>") + 6)));
             }
+            readingFile.close();
         } catch (FileNotFoundException e) {
             System.out.println("[INFO]There is no stats of Phrase");
         }

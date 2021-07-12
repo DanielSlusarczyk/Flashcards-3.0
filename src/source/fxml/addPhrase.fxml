@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -14,20 +15,24 @@
             <Image url="@../img/cardsBackground.png" />
          </image>
       </ImageView>
-      <Button id="answerButton" fx:id="addButton" layoutX="256.0" layoutY="416.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="50.0" prefWidth="175.0" stylesheets="@../css/buttons.css" text="Add" />
-      <TextField fx:id="polishTextField" alignment="CENTER" layoutX="102.0" layoutY="128.0" prefHeight="45.0" prefWidth="482.0">
+      <Button id="answerButton" fx:id="addButton" layoutX="263.0" layoutY="416.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="50.0" prefWidth="175.0" stylesheets="@../css/buttons.css" text="Add" />
+      <TextField fx:id="polishTextField" alignment="CENTER" layoutX="109.0" layoutY="129.0" prefHeight="45.0" prefWidth="482.0" stylesheets="@../css/textFiled.css">
          <font>
             <Font size="20.0" />
          </font></TextField>
-      <TextField fx:id="englishTextField" alignment="CENTER" layoutX="102.0" layoutY="250.0" prefHeight="45.0" prefWidth="482.0">
+      <TextField fx:id="englishTextField" alignment="CENTER" layoutX="109.0" layoutY="250.0" prefHeight="45.0" prefWidth="482.0">
          <font>
             <Font size="20.0" />
-         </font></TextField>
-      <Label id="addPhraseLabel" fx:id="englishLabel" layoutX="102.0" layoutY="217.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="English:" textFill="WHITE">
+         </font>
+         <stylesheets>
+            <URL value="@../css/tabPane.css" />
+            <URL value="@../css/textFiled.css" />
+         </stylesheets></TextField>
+      <Label id="addPhraseLabel" fx:id="englishLabel" layoutX="109.0" layoutY="217.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="English:" textFill="WHITE">
          <font>
             <Font name="Roboto Thin" size="20.0" />
          </font></Label>
-      <Label id="addPhraseLabel" fx:id="translationLabel" layoutX="102.0" layoutY="95.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="Polish:" textFill="WHITE">
+      <Label id="addPhraseLabel" fx:id="translationLabel" layoutX="109.0" layoutY="95.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="Polish:" textFill="WHITE">
          <font>
             <Font name="Roboto Thin" size="20.0" />
          </font>
@@ -47,12 +52,12 @@
                </cursor>
             </ImageView>
          </graphic></Button>
-      <Label id="addPhraseLabel" fx:id="groupLabel" layoutX="102.0" layoutY="325.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="Group:" textFill="WHITE">
+      <Label id="addPhraseLabel" fx:id="groupLabel" layoutX="109.0" layoutY="325.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="Group:" textFill="WHITE">
          <font>
             <Font name="Roboto Thin" size="20.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" layoutX="102.0" layoutY="358.0" prefHeight="40.0" prefWidth="482.0" style="-fx-background-color: transparent;">
+      <HBox alignment="CENTER" layoutX="109.0" layoutY="358.0" prefHeight="40.0" prefWidth="482.0" style="-fx-background-color: transparent;">
          <children>
             <Button id="categoriesAddButton" fx:id="VButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="72.0" stylesheets="@../css/buttons.css" text="Verb">
                <HBox.margin>
@@ -100,7 +105,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Button id="transparentButton" layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnButtonAction" prefHeight="48.0" prefWidth="48.0" stylesheets="@../css/buttons.css">
+      <Button id="transparentButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnButtonAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/buttons.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

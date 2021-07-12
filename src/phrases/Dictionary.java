@@ -31,6 +31,10 @@ public class Dictionary implements Iterable {
         flashcards.addAll(dictionary.flashcards);
     }
 
+    public void add(Phrase phrase){
+        flashcards.add(phrase);
+    }
+
     public double getTheHighestRatio() {
         double result = 0;
         for (Phrase phrase : flashcards) {
@@ -82,12 +86,25 @@ public class Dictionary implements Iterable {
         return null;
     }
 
+    public Phrase getNew(){
+        List<Phrase> properPhrases = new ArrayList<>();
+        for (Phrase phrase : flashcards) {
+            if(phrase.getRatio() == 1 && phrase.getNmbOfAnswer() == 0){
+                properPhrases.add(phrase);
+            }
+        }
+        if (properPhrases.size() != 0) {
+            return properPhrases.get(new Random().nextInt(properPhrases.size()));
+        }
+        return null;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void add(Phrase phrase) {
-        flashcards.add(phrase);
+    public void remove(Phrase phrase){
+        flashcards.remove(phrase);
     }
 
     public boolean contains(Phrase phrase) {

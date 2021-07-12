@@ -25,7 +25,7 @@ public class CardsManager implements Settings, Iterable<Phrase> {
     private Mode mode;
     private Dictionary usedDictionary;
     private double sessionRatio;
-    private double phraseCounter;
+    private int phraseCounter;
 
 
     public CardsManager(String inFile) throws FileNotFoundException {
@@ -53,12 +53,20 @@ public class CardsManager implements Settings, Iterable<Phrase> {
     }
 
     public Phrase getNextPhrase() {
+        Phrase result;
         try {
             if (usedDictionary == null || usedDictionary.size() == 0) {
                 throw new UnhandledSituationException("[WANING]The used dictionary contains no phrases!");
             }
         }catch (UnhandledSituationException exception){
             exception.printStackTrace();
+        }
+        if(SettingsController.newFirst){
+            System.out.println("[INFO]New Phrase");
+            result = usedDictionary.getNew();
+            if(result != null){
+                return result;
+            }
         }
         //Random phrase every AMOUNT_OF_CARD_BETWEEN_RANDOM
         phraseCounter++;
@@ -68,7 +76,7 @@ public class CardsManager implements Settings, Iterable<Phrase> {
             return usedDictionary.get(number);
         }
         System.out.println("[INFO]Phrase with the closest convergence");
-        Phrase result = usedDictionary.get(sessionRatio);
+        result = usedDictionary.get(sessionRatio);
         return result;
     }
 
@@ -82,7 +90,6 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         }
     }
 
-
     public void actualizeRatio(Answer answer) {
         switch (answer) {
             case CORRECT -> sessionRatio = sessionRatio - sessionRatio * RATIO_INCREASE_FOR_CORRECT_ANSWER;
@@ -90,7 +97,6 @@ public class CardsManager implements Settings, Iterable<Phrase> {
             case TYPO -> sessionRatio = sessionRatio - sessionRatio * RATIO_INCREASE_FOR_TYPO;
         }
     }
-
 
     public Double getActualRatio() {
         return sessionRatio;
@@ -106,6 +112,10 @@ public class CardsManager implements Settings, Iterable<Phrase> {
 
     public Dictionary getAllWords(){
         return allWords;
+    }
+
+    public int getNmb(){
+        return phraseCounter;
     }
 
 
@@ -124,6 +134,19 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         sessionRatio = usedDictionary.getTheHighestRatio();
     }
 
+    public void remove(Phrase phrase){
+        usedDictionary.remove(phrase);
+        allWords.remove(phrase);
+        switch(usedDictionary.getName()){
+            case "Noun" -> nouns.remove(phrase);
+            case "Verb" -> verbs.remove(phrase);
+            case "Adverb" -> adverbs.remove(phrase);
+            case "Adjective" -> adjectives.remove(phrase);
+            case "Phrasal Verb" -> phrasalVerbs.remove(phrase);
+            case "Others" -> others.remove(phrase);
+        }
+    }
+
     public Iterator<Phrase> autoSaveIterator(){
         //Actualize allWords by usedDictionary
         Iterator<Phrase> iterator = usedDictionary.iterator();
@@ -134,6 +157,44 @@ public class CardsManager implements Settings, Iterable<Phrase> {
             }
         }
         return allWords.iterator();
+    }
+
+    public void editEngWord(Phrase phrase, String newWord){
+        String oldPath = FileReader.getPath(phrase);
+        phrase.editEngWord(newWord);
+        if(!FileReader.editName(oldPath, FileReader.getPath(phrase))){
+            System.out.println("[INFO] Problem with new name!");
+            System.out.println("[INFO] oldPath: " + oldPath);
+            System.out.println("[INFO] newPath: " + FileReader.getPath(phrase));
+        }
+    }
+
+    public void editTranslation(Phrase phrase, List<String> newTranslation){
+        String oldPath = FileReader.getPath(phrase);
+        phrase.editTranslation(newTranslation);
+        if(!FileReader.editName(oldPath, FileReader.getPath(phrase))){
+            System.out.println("[INFO] Problem with new name!");
+        }
+    }
+
+    public void editGroup(Phrase phrase, String group){
+        switch(phrase.getGroup()){
+            case "Noun" -> nouns.remove(phrase);
+            case "Verb" -> verbs.remove(phrase);
+            case "Adverb" -> adverbs.remove(phrase);
+            case "Adjective" -> adjectives.remove(phrase);
+            case "Phrasal Verb" -> phrasalVerbs.remove(phrase);
+            case "Others" -> others.remove(phrase);
+        }
+        switch(group){
+            case "Noun" -> nouns.add(phrase);
+            case "Verb" -> verbs.add(phrase);
+            case "Adverb" -> adverbs.add(phrase);
+            case "Adjective" -> adjectives.add(phrase);
+            case "Phrasal Verb" -> phrasalVerbs.add(phrase);
+            case "Others" -> others.add(phrase);
+        }
+        phrase.editGroup(group);
     }
 
 }

@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Phrase implements Comparable<Phrase> {
-    private final String engWord;
-    private final List<String> translation;
-    private final String group;
+    private String engWord;
+    private List<String> translation;
+    private String group;
     private int nmbOfAnswer;
     private int nmbOfCorrectAnswer;
 
@@ -111,5 +111,16 @@ public class Phrase implements Comparable<Phrase> {
         return nmbOfAnswer;
     }
 
+    public void editEngWord(String newWord){
+        engWord = newWord;
+    }
+
+    public void editTranslation(List<String> newTranslation){
+        translation = newTranslation;
+    }
+
+    public void editGroup(String group){
+        this.group = group;
+    }
 
 }

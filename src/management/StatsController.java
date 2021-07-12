@@ -13,7 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import phrases.Dictionary;
 import phrases.Phrase;
@@ -23,21 +25,23 @@ import java.net.URL;
 import java.util.*;
 
 public class StatsController implements Initializable {
+    public static Phrase editPhrase;
+    public static Phrase detailedPhrase;
+    private static CardsManager cardsManager;
     @FXML
     ScrollPane AZScrollPane, ZAScrollPane, ratioScrollPane, reverseRatioScrollPane;
     @FXML
     TabPane tabPane;
     @FXML
-    AnchorPane detailsAnchorPane, rootPane;
+    AnchorPane detailsAnchorPane, rootPane, sessionInfoPane;
     @FXML
-    Button returnButton;
-
-    private static CardsManager cardsManager;
+    Button returnButton, editButton;
+    @FXML
+    Label ratioInfoLabel, nmbInfoLabel;
     private Dictionary AZDictionary, ZADictionary, ratioDictionary, reverseRatioDictionary;
     private TranslateTransition statsTranslateTransition, chartTranslateTransition;
     private boolean statsShown;
     private List<Button> detailButtons;
-    public static Phrase detailedPhrase;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,37 +58,43 @@ public class StatsController implements Initializable {
         statsTranslateTransition.setToY(250);
         chartTranslateTransition.setFromY(0);
         chartTranslateTransition.setToY(350);
+        nmbInfoLabel.setText("Flashcard: " + cardsManager.getNmb());
+        ratioInfoLabel.setText("Ratio: " + (double) Math.round(cardsManager.getActualRatio() * 100) / 100);
+        editButton.setVisible(false);
         initAZ();
         initZA();
         initRatio();
         initReverseRatio();
     }
 
-    private void initAZ(){
+    private void initAZ() {
         setContent(AZDictionary.iterator(), AZScrollPane);
     }
-    private void initZA(){
+
+    private void initZA() {
         setContent(ZADictionary.iterator(), ZAScrollPane);
     }
-    private void initRatio(){
+
+    private void initRatio() {
         setContent(ratioDictionary.iterator(), ratioScrollPane);
     }
-    private void initReverseRatio(){
+
+    private void initReverseRatio() {
         setContent(reverseRatioDictionary.iterator(), reverseRatioScrollPane);
     }
 
-    private void setContent(Iterator<Phrase> phraseIterator, ScrollPane scrollPane){
+    private void setContent(Iterator<Phrase> phraseIterator, ScrollPane scrollPane) {
         GridPane gridPane = new GridPane();
         gridPane.setVgap(10);
         gridPane.setHgap(10);
         gridPane.gridLinesVisibleProperty();
-        gridPane.getColumnConstraints().add(new ColumnConstraints(20));
+        gridPane.getColumnConstraints().add(new ColumnConstraints(30));
         gridPane.getColumnConstraints().add(new ColumnConstraints(200));
-        gridPane.getColumnConstraints().add(new ColumnConstraints(320));
+        gridPane.getColumnConstraints().add(new ColumnConstraints(310));
         gridPane.getColumnConstraints().add(new ColumnConstraints(40));
         setTitleLabels(gridPane);
         int tmp = 1;
-        while(phraseIterator.hasNext()){
+        while (phraseIterator.hasNext()) {
             Phrase phrase = phraseIterator.next();
             setPhraseLabels(phrase, tmp, gridPane);
             Button button = new Button("Detail");
@@ -99,7 +109,7 @@ public class StatsController implements Initializable {
         scrollPane.setContent(gridPane);
     }
 
-    private void setTitleLabels(GridPane gridPane){
+    private void setTitleLabels(GridPane gridPane) {
         Label engDesc = new Label("English:");
         engDesc.setId("tabPaneLabel");
         engDesc.getStylesheets().add("source/css/labels.css");
@@ -110,11 +120,11 @@ public class StatsController implements Initializable {
         ratioDesc.setId("tabPaneLabel");
         ratioDesc.getStylesheets().add("source/css/labels.css");
         gridPane.add(engDesc, 1, 0);
-        gridPane.add(translationDesc, 2,0);
+        gridPane.add(translationDesc, 2, 0);
         gridPane.add(ratioDesc, 3, 0);
     }
 
-    private void setPhraseLabels(Phrase phrase, int tmp, GridPane gridPane){
+    private void setPhraseLabels(Phrase phrase, int tmp, GridPane gridPane) {
         Label number = new Label(tmp + ".");
         number.setId("tabPaneLabel");
         number.getStylesheets().add("source/css/labels.css");
@@ -124,39 +134,40 @@ public class StatsController implements Initializable {
         Label translationLabel = new Label(phrase.getTranslationAsOneString().replace("|", ", "));
         translationLabel.setId("tabPaneLabel");
         translationLabel.getStylesheets().add("source/css/labels.css");
-        Label ratioLabel = new Label(String.valueOf((double)(Math.round(phrase.getRatio() * 100))/100));
+        Label ratioLabel = new Label(String.valueOf((double) (Math.round(phrase.getRatio() * 100)) / 100));
         ratioLabel.setId("tabPaneLabel");
         ratioLabel.getStylesheets().add("source/css/labels.css");
-        gridPane.add(number,0,tmp);
+        gridPane.add(number, 0, tmp);
         gridPane.add(engLabel, 1, tmp);
         gridPane.add(translationLabel, 2, tmp);
         gridPane.add(ratioLabel, 3, tmp);
     }
 
-    private void detailButtonAction(Button button, Phrase phrase, ScrollPane scrollPane){
-        if(statsShown){
+    private void detailButtonAction(Button button, Phrase phrase, ScrollPane scrollPane) {
+        if (statsShown) {
             boolean reload = false;
-            for(Button b : detailButtons){
-                if(!b.equals(button) && b.getText().equals("Hide")){
+            for (Button b : detailButtons) {
+                if (!b.equals(button) && b.getText().equals("Hide")) {
                     b.setText("Detail");
                     reload = true;
                 }
             }
-            if(!reload) {
+            if (!reload) {
                 scrollPane.setPrefHeight(350);
                 statsTranslateTransition.setRate(-1);
                 statsTranslateTransition.setOnFinished(actionEvent -> {
                 });
+                editButton.setVisible(false);
                 statsTranslateTransition.play();
                 chartTranslateTransition.setRate(-1);
                 chartTranslateTransition.setOnFinished(actionEvent1 -> {
                     detailsAnchorPane.getChildren().clear();
-                    returnButton.setVisible(true);
+                    sessionInfoPane.setVisible(true);
                 });
                 chartTranslateTransition.play();
                 button.setText("Detail");
                 statsShown = false;
-            }else{
+            } else {
                 button.setText("Hide");
                 detailedPhrase = phrase;
                 AnchorPane pane;
@@ -167,7 +178,7 @@ public class StatsController implements Initializable {
                     e.printStackTrace();
                 }
             }
-        }else{
+        } else {
             detailedPhrase = phrase;
             AnchorPane pane;
             try {
@@ -180,19 +191,33 @@ public class StatsController implements Initializable {
             statsTranslateTransition.play();
             statsTranslateTransition.setOnFinished(actionEvent -> {
                 scrollPane.setPrefHeight(100);
+                editButton.setVisible(true);
             });
             chartTranslateTransition.setRate(1);
             chartTranslateTransition.play();
-            chartTranslateTransition.setOnFinished(actionEvent1 -> { });
+            chartTranslateTransition.setOnFinished(actionEvent1 -> {
+            });
             button.setText("Hide");
+            sessionInfoPane.setVisible(false);
             statsShown = true;
-            returnButton.setVisible(false);
         }
     }
+
     @FXML
-    private void returnButtonAction(){
+    private void returnButtonAction() {
         try {
             AnchorPane cardsPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/cards.fxml")));
+            rootPane.getChildren().setAll(cardsPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void editButtonAction(){
+        editPhrase = detailedPhrase;
+        try {
+            AnchorPane cardsPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/editPhrase.fxml")));
             rootPane.getChildren().setAll(cardsPane);
         } catch (IOException e) {
             e.printStackTrace();

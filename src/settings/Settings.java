@@ -17,7 +17,7 @@ public interface Settings {
     //General
     long CHECKING_INTERVAL = 500_000_000;
     long INIT_INTERVAL = 1_000_000_000;
-    int AUTO_SAVING_INTERVAL = 1000 * 5;
+    int AUTO_SAVING_INTERVAL = 1000 * 10;
 
     enum Mode {
         PHRASAL_VERB, NOUN, ADJECTIVE, ADVERB, VERB, ALL, OTHERS;

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.EditPhraseController">
+    <children>
+        <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/cardsBackground.png" />
+            </image>
+        </ImageView>
+        <Button id="discardSettingsButton" fx:id="saveButton" layoutX="170.0" layoutY="416.0" mnemonicParsing="false" onAction="#saveButtonAction" prefHeight="54.0" prefWidth="175.0" stylesheets="@../css/buttons.css" text="Save" />
+        <TextField fx:id="polishTextField" alignment="CENTER" layoutX="109.0" layoutY="129.0" prefHeight="45.0" prefWidth="482.0" stylesheets="@../css/textFiled.css">
+            <font>
+                <Font size="20.0" />
+            </font></TextField>
+        <TextField fx:id="englishTextField" alignment="CENTER" layoutX="109.0" layoutY="250.0" prefHeight="45.0" prefWidth="482.0">
+            <font>
+                <Font size="20.0" />
+            </font>
+            <stylesheets>
+                <URL value="@../css/tabPane.css" />
+                <URL value="@../css/textFiled.css" />
+            </stylesheets></TextField>
+        <Label id="addPhraseLabel" fx:id="englishLabel" layoutX="109.0" layoutY="217.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="English:" textFill="WHITE">
+            <font>
+                <Font name="Roboto Thin" size="20.0" />
+            </font></Label>
+        <Label id="addPhraseLabel" fx:id="translationLabel" layoutX="109.0" layoutY="95.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="Polish:" textFill="WHITE">
+            <font>
+                <Font name="Roboto Thin" size="20.0" />
+            </font>
+        </Label>
+        <HBox fx:id="translationHBox" layoutX="109.0" layoutY="175.0" prefHeight="31.0" prefWidth="482.0" style="-fx-background-color: transparent;" />
+        <Button id="transparentButton" fx:id="addTranslationButton" layoutX="584.0" layoutY="127.0" mnemonicParsing="false" onAction="#addTranslationButtonAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/buttons.css">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../img/plusIcon.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            </graphic></Button>
+        <Label id="addPhraseLabel" fx:id="groupLabel" layoutX="109.0" layoutY="325.0" prefHeight="33.0" prefWidth="108.0" stylesheets="@../css/labels.css" text="Group:" textFill="WHITE">
+            <font>
+                <Font name="Roboto Thin" size="20.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER" layoutX="109.0" layoutY="358.0" prefHeight="40.0" prefWidth="482.0" style="-fx-background-color: transparent;">
+            <children>
+                <Button id="categoriesAddButton" fx:id="VButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="72.0" stylesheets="@../css/buttons.css" text="Verb">
+                    <HBox.margin>
+                        <Insets right="1.0" />
+                    </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Button id="categoriesAddButton" fx:id="PVButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" stylesheets="@../css/buttons.css" text="Phrasal Verb">
+                    <HBox.margin>
+                        <Insets right="1.0" />
+                    </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Button id="categoriesAddButton" fx:id="NButton" layoutX="78.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="70.0" stylesheets="@../css/buttons.css" text="Noun">
+                    <HBox.margin>
+                        <Insets right="1.0" />
+                    </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Button id="categoriesAddButton" fx:id="AdButton" layoutX="146.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="101.0" stylesheets="@../css/buttons.css" text="Adjective">
+                    <HBox.margin>
+                        <Insets right="1.0" />
+                    </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Button id="categoriesAddButton" fx:id="AButton" layoutX="214.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="78.0" stylesheets="@../css/buttons.css" text="Adverb">
+                    <HBox.margin>
+                        <Insets right="1.0" />
+                    </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+                <Button id="categoriesAddButton" fx:id="OButton" layoutX="282.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="77.0" stylesheets="@../css/buttons.css" text="Others">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></Button>
+            </children>
+        </HBox>
+        <Label id="addPhraseLabel" fx:id="translationLabel1" alignment="CENTER" layoutX="183.0" layoutY="29.0" prefHeight="66.0" prefWidth="321.0" stylesheets="@../css/labels.css" text="EDIT PHRASE:" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <Button id="transparentButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#returnButtonAction" prefHeight="40.0" prefWidth="40.0" stylesheets="@../css/buttons.css">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../img/returnIcon.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+      <Button id="saveSettingsButton" fx:id="removeButton" layoutX="355.0" layoutY="416.0" mnemonicParsing="false" onAction="#removeButtonAction" prefHeight="54.0" prefWidth="175.0" stylesheets="@../css/buttons.css" text="Remove" />
+    </children>
+</AnchorPane>

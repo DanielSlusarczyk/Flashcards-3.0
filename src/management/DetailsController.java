@@ -1,6 +1,7 @@
 package management;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -10,10 +11,12 @@ import javafx.scene.layout.AnchorPane;
 import operation.FileReader;
 import phrases.Phrase;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DetailsController implements Initializable {
@@ -59,8 +62,8 @@ public class DetailsController implements Initializable {
             }
         });
         xAxis.setAutoRanging(false);
-        System.out.println("The min:" + getMin(dates));
-        System.out.println("The max:" + getMax(dates));
+        System.out.println("[INFO]Min value:" + getMin(dates));
+        System.out.println("[INFO]Max value:" + getMax(dates));
         xAxis.setLowerBound(0.999999 * getMin(dates));
         xAxis.setUpperBound(1.000001 * getMax(dates));
         xAxis.setTickUnit(((getMax(dates) - getMin(dates)) + 1000)/4);
@@ -106,4 +109,5 @@ public class DetailsController implements Initializable {
         }
         return (double)max;
     }
+
 }

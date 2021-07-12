@@ -29,21 +29,20 @@ public class CardsController implements Initializable, Settings {
     private static AutoSaveThread autoSaveThread;
     //FXML:
     @FXML
-    Pane menuPane;
+    Pane menuPane, answerPane;
     @FXML
     AnchorPane rootPane;
     @FXML
-    Label questionLabel, answerLabel;
+    Label questionLabel, answerLabel, typoLabel;
     @FXML
     TextField answerTextField;
     @FXML
-    Button addButton, slideButton, showButton;
+    Button addButton, slideButton, showButton, typoButton;
     @FXML
     Line line1, line2, line3, line4, line5, line6;
     //Basic:
-    private boolean menuShown, answerButtonClicked;
-    private long startAnswering, endAnswering;
-    private long lastTime, lastTimeOfInit;
+    private boolean menuShown, answerButtonClicked, typoHintShown;
+    private long startAnswering, endAnswering, lastTime, lastTimeOfInit, timerTime, startPauseTime;
     //Own:
     private AnimationTimer timer;
     private Phrase phrase;
@@ -54,6 +53,11 @@ public class CardsController implements Initializable, Settings {
 
     public static AutoSaveThread getThread() {
         return autoSaveThread;
+    }
+
+    public static void startThread(){
+        autoSaveThread = new AutoSaveThread(AUTO_SAVING_INTERVAL, cardsManager);
+        autoSaveThread.start();
     }
 
     @Override
@@ -94,6 +98,7 @@ public class CardsController implements Initializable, Settings {
 
             @Override
             public void handle(long time) {
+                timerTime = time;
                 //Auto checking
                 if (time - lastTimeOfInit >= INIT_INTERVAL && phrase == null) {
                     init(time);
@@ -106,10 +111,15 @@ public class CardsController implements Initializable, Settings {
                         incorrectAnswerAction();
                         startAnswering = time;
                     }
-                    else if(result == Answer.TYPO && answerButtonClicked){
-                        endAnswering = time;
-                        incorrectAnswerAction();
-                        startAnswering = time;
+                    else if(result == Answer.TYPO){
+                        if(SettingsController.tips) {
+                            typoButton.setVisible(true);
+                        }
+                        if(answerButtonClicked){
+                            endAnswering = time;
+                            incorrectAnswerAction();
+                            startAnswering = time;
+                        }
                     }
                     else if (result == Answer.CORRECT) {
                         endAnswering = time;
@@ -125,9 +135,16 @@ public class CardsController implements Initializable, Settings {
     private void correctAnswerAction() {
         //Actualize stats
         phrase.setStatistic(phrase.getNmbOfCorrectAnswer() + 1, phrase.getNmbOfAnswer() + 1);
-        cardsManager.actualizeRatio(Answer.CORRECT);
-        double timeOfAnswering = (double) (endAnswering - startAnswering) / 1_000_000_000;
-        FileReader.writeCardsStats(phrase, System.currentTimeMillis(), timeOfAnswering);
+        if(typoHintShown){
+            cardsManager.actualizeRatio(Answer.TYPO);
+            typoHintShown = false;
+        }else {
+            cardsManager.actualizeRatio(Answer.CORRECT);
+        }
+        FileReader.writeCardsStats(phrase, System.currentTimeMillis(), answeringTime());
+        System.out.println("[INFO]Answering time: " + answeringTime());
+        //Prepare board
+        typoButton.setVisible(false);
         //Get new phrase
         phrase = cardsManager.getNextPhrase();
         questionLabel.setText(phrase.getTranslationAsOneString().replace("|", ", "));
@@ -138,12 +155,15 @@ public class CardsController implements Initializable, Settings {
     private void incorrectAnswerAction() {
         //Actualize stats
         cardsManager.actualizeRatio(Answer.INCORRECT);
-        double timeOfAnswering = (double) (endAnswering - startAnswering) / 1_000_000_000;
-        //FileReader.writeCardsStats(phrase, System.currentTimeMillis(), timeOfAnswering);
+        FileReader.writeCardsStats(phrase, System.currentTimeMillis(), answeringTime());
+        System.out.println("[INFO]Answering time: " + answeringTime());
+        //Prepare board
+        typoButton.setVisible(false);
         //Show answer and wait
         fadeAnswerLabel.play();
         answerLabel.setText(phrase.getEngWord().replace("|", ", "));
         answerButtonClicked = false;
+        showButton.setText("Show");
     }
 
     private void setTransitions() {
@@ -188,6 +208,15 @@ public class CardsController implements Initializable, Settings {
         return cost[len0 - 1];
     }
 
+    private double answeringTime(){
+        return (double) (endAnswering - startAnswering) / 1_000_000_000;
+    }
+
+    private void timeCorrection(long start, long end){
+        startAnswering = startAnswering + (end - start);
+    }
+
+
     @FXML
     private void showButtonAction() {
         if (showButton.getText().equals("Show")) {
@@ -197,6 +226,7 @@ public class CardsController implements Initializable, Settings {
             //Get new phrase
             phrase = cardsManager.getNextPhrase();
             questionLabel.setText(phrase.getTranslationAsOneString().replace("|", ", "));
+            startAnswering = timerTime;
             answerTextField.clear();
             answerLabel.setText("");
             showButton.setText("Show");
@@ -211,6 +241,8 @@ public class CardsController implements Initializable, Settings {
             menuTranslation.play();
             slideButtonTranslation.setRate(-1);
             slideButtonTranslation.play();
+            answerPane.setDisable(false);
+            timeCorrection(startPauseTime, timerTime);
             menuShown = false;
         } else {
             //Show menu
@@ -218,6 +250,8 @@ public class CardsController implements Initializable, Settings {
             menuTranslation.play();
             slideButtonTranslation.setRate(1);
             slideButtonTranslation.play();
+            answerPane.setDisable(true);
+            startPauseTime = timerTime;
             menuShown = true;
         }
     }
@@ -231,6 +265,30 @@ public class CardsController implements Initializable, Settings {
     @FXML
     private void statsButtonAction() throws IOException {
         AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/stats.fxml")));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void settingsButtonAction() throws IOException {
+        AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/settings.fxml")));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void showHint(){
+        typoLabel.setVisible(true);
+        typoLabel.setText(answerTextField.getText() +  " -> " + phrase.getEngWord());
+        typoHintShown = true;
+    }
+    @FXML
+    private void hideHint(){
+        typoLabel.setVisible(false);
+    }
+
+    @FXML
+    private void exitButtonAction() throws IOException {
+        SettingsController.autoSave = false;
+        AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/menu.fxml")));
         rootPane.getChildren().setAll(pane);
     }
 }
