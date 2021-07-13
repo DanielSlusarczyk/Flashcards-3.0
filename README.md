@@ -3,9 +3,10 @@ Projekt _FlashCards-3.0_ jest trzecią odsłoną programu do nauki fiszek.
 #### Autor: Daniel Ślusarczyk
 
 ## Zasady
-Każda fiszka ma przypisany współczynnik określający opanowanie danego słówka. Współczynnik na poziomie 1.0 oznacza bardzo łatwe słówko, lub nowe, a im wartość współczynnika bliższa 0.0 tym słówko uznawane jest za trudniejsze.  
-Każda sesja uczenia się słówek rozpoczyna się ze współczynnikiem 1.0. Każda poprawna odpowiedź powoduje zmniejszanie tej wartości, aż do 0.0, a niepoprawna zwiększenie wartości.  
-Algorytm wybierający słówka do uczenia bierze pod uwagę aktualny współczynnik przypisany do sesji i wybiera słówka najbardzej zbliżone poziomem opanowania.  
+### Fiszki:
+Każda fiszka ma przypisany współczynnik określający opanowanie danego słówka. Współczynnik na poziomie 1.0 oznacza bardzo łatwe słówko, lub nowe, a im wartość współczynnika bliższa 0.0 tym słówko uznawane jest za trudniejsze. Każda sesja uczenia się słówek rozpoczyna się ze współczynnikiem 1.0. Każda poprawna odpowiedź powoduje zmniejszanie tej wartości, aż do 0.0, a niepoprawna zwiększenie wartości. Algorytm wybierający słówka do uczenia bierze pod uwagę aktualny współczynnik przypisany do sesji i wybiera słówka najbardzej zbliżone poziomem opanowania.  
+### Aplikacja:
+Aplikacja posiada osobny wątek automatycznego zapisywania. Co więcej, czas odpowiedzi na każdą z fiszek jest mierzony, co pozwala na zobaczenie na wykresie jak zmienia się czas odpowiedzi na dane słówko w czasie nauki.
 
 ## Wnioski
 Projekt _Tanks_ był prywatnym projektem pozwalającym na doładniejsze zrozumienie mechanizmów aplikacji okienkowych. Umożliwił bliższe poznanie programowania wielowątkowego (wątek zapisuje stan gry co określony interwał) i dokładniesze zrozumienie plików css i fxml. Dodatkowo projekt ten umożliwił za zapoznanie się z tworzeniem animacji w aplikacji okienkowym.
