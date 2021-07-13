@@ -8,14 +8,19 @@ Każda sesja uczenia się słówek rozpoczyna się ze współczynnikiem 1.0. Ka�
 Algorytm wybierający słówka do uczenia bierze pod uwagę aktualny współczynnik przypisany do sesji i wybiera słówka najbardzej zbliżone poziomem opanowania.  
 
 ## Wnioski
-Projekt _Tanks_ był prywatnym projektem pozwalającym na doładniejsze zrozumienie mechanizmów aplikacji okienkowych. Umożliwił bliższe poznanie programowania wielowątkowego (wątek zapisuje stan gry co określony interwał) i dokładniesze zrozumienie plików css i fxml.
+Projekt _Tanks_ był prywatnym projektem pozwalającym na doładniejsze zrozumienie mechanizmów aplikacji okienkowych. Umożliwił bliższe poznanie programowania wielowątkowego (wątek zapisuje stan gry co określony interwał) i dokładniesze zrozumienie plików css i fxml. Dodatkowo projekt ten umożliwił za zapoznanie się z tworzeniem animacji w aplikacji okienkowym.
 
 ## Wygląd
-### Uczenie się
-![rozgrywka1](https://user-images.githubusercontent.com/74370363/125438035-615f21cb-048b-419c-ab55-e296f6591966.png)
-![rozgrywka4](https://user-images.githubusercontent.com/74370363/125438574-3dcf01ea-a91d-43e5-b336-5e77afd08bd1.png)
+### Menu
+![2021-07-13 13_00_33-FlashCards 3 0 – CardsManager java](https://user-images.githubusercontent.com/74370363/125444641-09f38035-f415-4480-8805-5808bd417492.png)
+### Fiszki:
+![2021-07-13 13_01_11-FlashCards 3 0 – CardsManager java](https://user-images.githubusercontent.com/74370363/125444646-f0ba2544-9b60-4488-992f-8d192e272ec3.png)
+### Dodawanie fiszek:
+![2021-07-13 13_01_32-FlashCards 3 0 – CardsManager java](https://user-images.githubusercontent.com/74370363/125444647-f0d1806e-6bb8-4cf7-b677-14edc6a5af59.png)
+### Lista Fiszek:
+![2021-07-13 13_03_15-FlashCards 3 0 – CardsManager java](https://user-images.githubusercontent.com/74370363/125444663-e2088f3c-a3e3-421c-a946-b8ebc34a22b3.png)
+### Statystyki fiszki:
+![2021-07-13 13_01_56-FlashCards 3 0 – CardsManager java](https://user-images.githubusercontent.com/74370363/125444662-9de5b603-a0d4-4031-94bf-585077853b2b.png)
+### Okno ustawień:
+![2021-07-13 13_03_36-FlashCards 3 0 – CardsManager java](https://user-images.githubusercontent.com/74370363/125444661-48e3ac6d-9b03-4227-ae62-53224880ea62.png)
 
-### Okno ustawień
-![zakladka1](https://user-images.githubusercontent.com/74370363/125438349-b97c302a-de82-4079-a3f5-6fcf8d94ebc7.png)
-![zakladka2](https://user-images.githubusercontent.com/74370363/125438362-e921ffa3-cf03-4708-aabb-5a6e25f53c09.png)
-![zakladka3](https://user-images.githubusercontent.com/74370363/125438371-a84414a3-bfb2-440b-9685-4cb5089522b2.png)
