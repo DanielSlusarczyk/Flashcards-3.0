@@ -24,7 +24,8 @@
                   <Button id="categoriesButton" fx:id="buttonN" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Noun" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="p1" layoutX="320.0" layoutY="-23.0" prefHeight="240.0" prefWidth="240.0" visible="false">
@@ -37,7 +38,8 @@
                   <Button id="categoriesButton" fx:id="buttonV" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Verb">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="p3" layoutX="317.0" layoutY="284.0" prefHeight="240.0" prefWidth="240.0" visible="false">
@@ -50,7 +52,8 @@
                   <Button id="categoriesButton" fx:id="buttonAd" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Adjective">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="p2" layoutX="408.0" layoutY="130.0" prefHeight="240.0" prefWidth="240.0" stylesheets="@../css/buttons.css" visible="false">
@@ -60,10 +63,11 @@
                         <Image url="@../img/blueHexagon.png" />
                      </image>
                   </ImageView>
-                  <Button id="categoriesButton" fx:id="buttonPV" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Phrasal Verb" textAlignment="CENTER" wrapText="true">
+                  <Button id="categoriesButton" fx:id="buttonPV" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Phrasal Verb" textAlignment="CENTER" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="p4" layoutX="139.0" layoutY="284.0" prefHeight="240.0" prefWidth="240.0" visible="false">
@@ -76,7 +80,8 @@
                   <Button id="categoriesButton" fx:id="buttonA" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Adverb">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="p6" layoutX="141.0" layoutY="-23.0" prefHeight="240.0" prefWidth="240.0" visible="false">
@@ -89,7 +94,8 @@
                   <Button id="categoriesButton" fx:id="buttonO" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Other" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
             <Button id="categoryButton" fx:id="buttonAll" alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="199.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" stylesheets="@../css/buttons.css" text="All">

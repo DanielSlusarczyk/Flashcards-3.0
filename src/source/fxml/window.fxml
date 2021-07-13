@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="530.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.WindowController">
+   <children>
+      <AnchorPane fx:id="rootPane" layoutY="38.0" maxWidth="700.0" prefHeight="500.0" prefWidth="700.0" />
+      <AnchorPane fx:id="windowBar" maxWidth="700.0" prefHeight="25.0" prefWidth="700.0" style="-fx-background-color: #CFCFCF;">
+         <children>
+            <Button id="transparentButton" alignment="TOP_CENTER" layoutX="650.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/buttons.css">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/exitWindowIcon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic></Button>
+            <Button id="transparentButton" alignment="TOP_CENTER" layoutX="610.0" mnemonicParsing="false" onAction="#minimizeButtonAction" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/buttons.css">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/minimizeInon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fx:id="synchro" fitHeight="15.0" fitWidth="15.0" layoutX="26.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/synchro.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="synchroOff" fitHeight="15.0" fitWidth="15.0" layoutX="9.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/synchroOff.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

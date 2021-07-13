@@ -17,18 +17,9 @@ public class Dictionary implements Iterable {
         this.name = name;
     }
 
-    public void addNewCard(String engWord, List<String> translation, String group) {
-        Phrase phrase = new Phrase(engWord, translation, group);
-        flashcards.add(phrase);
-    }
-
     public void addCard(String engWord, List<String> translation, int nmbOfCorrectAnswer, int nbmOfAnswer, String group) {
         Phrase phrase = new Phrase(engWord, translation, nmbOfCorrectAnswer, nbmOfAnswer, group);
         flashcards.add(phrase);
-    }
-
-    public void addCards(Dictionary dictionary) {
-        flashcards.addAll(dictionary.flashcards);
     }
 
     public void add(Phrase phrase){

@@ -20,6 +20,7 @@ import settings.Settings;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -55,7 +56,7 @@ public class CardsController implements Initializable, Settings {
         return autoSaveThread;
     }
 
-    public static void startThread(){
+    public static void startThread() {
         autoSaveThread = new AutoSaveThread(AUTO_SAVING_INTERVAL, cardsManager);
         autoSaveThread.start();
     }
@@ -76,12 +77,11 @@ public class CardsController implements Initializable, Settings {
 
     private Answer checkAnswer(String correct, String answer) {
         int distance = levenshteinDistance(answer, correct);
-        double percent = (double)(correct.length() - distance)/correct.length();
+        double percent = (double) (correct.length() - distance) / correct.length();
         adjustBackground(percent * 100);
         if (distance == 0) {
             return Answer.CORRECT;
-        }
-        else if(distance == 1){
+        } else if (distance == 1) {
             return Answer.TYPO;
         }
         return Answer.INCORRECT;
@@ -92,6 +92,7 @@ public class CardsController implements Initializable, Settings {
             public void init(long time) {
                 //First Phrase
                 phrase = cardsManager.getNextPhrase();
+                if (phrase == null) return;
                 questionLabel.setText(phrase.getTranslationAsOneString().replace("|", ", "));
                 startAnswering = time;
             }
@@ -105,26 +106,26 @@ public class CardsController implements Initializable, Settings {
                     lastTimeOfInit = time;
                 }
                 if (time - lastTime >= CHECKING_INTERVAL && phrase != null) {
-                    Answer result = checkAnswer(phrase.getEngWord(), answerTextField.getText());
+                    Answer result = checkAnswer(phrase.getEngWord(), answerTextField.getText().trim().toLowerCase());
                     if (result == Answer.INCORRECT && answerButtonClicked) {
                         endAnswering = time;
                         incorrectAnswerAction();
                         startAnswering = time;
-                    }
-                    else if(result == Answer.TYPO){
-                        if(SettingsController.tips) {
+                    } else if (result == Answer.TYPO) {
+                        if (SettingsController.tips) {
                             typoButton.setVisible(true);
                         }
-                        if(answerButtonClicked){
+                        if (answerButtonClicked) {
                             endAnswering = time;
                             incorrectAnswerAction();
                             startAnswering = time;
                         }
-                    }
-                    else if (result == Answer.CORRECT) {
+                    } else if (result == Answer.CORRECT) {
                         endAnswering = time;
                         correctAnswerAction();
                         startAnswering = time;
+                    } else if (result == Answer.INCORRECT) {
+                        typoButton.setVisible(false);
                     }
                     lastTime = time;
                 }
@@ -135,14 +136,18 @@ public class CardsController implements Initializable, Settings {
     private void correctAnswerAction() {
         //Actualize stats
         phrase.setStatistic(phrase.getNmbOfCorrectAnswer() + 1, phrase.getNmbOfAnswer() + 1);
-        if(typoHintShown){
+        if (typoHintShown) {
             cardsManager.actualizeRatio(Answer.TYPO);
             typoHintShown = false;
-        }else {
+        } else {
             cardsManager.actualizeRatio(Answer.CORRECT);
         }
-        FileReader.writeCardsStats(phrase, System.currentTimeMillis(), answeringTime());
-        System.out.println("[INFO]Answering time: " + answeringTime());
+        if (!showButton.getText().equals("Continue")) {
+            FileReader.writeCardsStats(phrase, System.currentTimeMillis(), answeringTime());
+            System.out.println("[INFO]Answering time: " + answeringTime());
+        } else {
+            showButton.setText("Show");
+        }
         //Prepare board
         typoButton.setVisible(false);
         //Get new phrase
@@ -154,6 +159,7 @@ public class CardsController implements Initializable, Settings {
 
     private void incorrectAnswerAction() {
         //Actualize stats
+        phrase.setStatistic(phrase.getNmbOfCorrectAnswer(), phrase.getNmbOfAnswer() + 1);
         cardsManager.actualizeRatio(Answer.INCORRECT);
         FileReader.writeCardsStats(phrase, System.currentTimeMillis(), answeringTime());
         System.out.println("[INFO]Answering time: " + answeringTime());
@@ -163,7 +169,6 @@ public class CardsController implements Initializable, Settings {
         fadeAnswerLabel.play();
         answerLabel.setText(phrase.getEngWord().replace("|", ", "));
         answerButtonClicked = false;
-        showButton.setText("Show");
     }
 
     private void setTransitions() {
@@ -179,7 +184,7 @@ public class CardsController implements Initializable, Settings {
         fadeAnswerLabel.setRate(1);
     }
 
-    private void adjustBackground(double percent){
+    private void adjustBackground(double percent) {
         line6.setVisible(percent > 84);
         line5.setVisible(percent > 68);
         line4.setVisible(percent > 52);
@@ -188,7 +193,7 @@ public class CardsController implements Initializable, Settings {
         line1.setVisible(percent > 1);
     }
 
-    private int levenshteinDistance (CharSequence lhs, CharSequence rhs) {
+    private int levenshteinDistance(CharSequence lhs, CharSequence rhs) {
         int len0 = lhs.length() + 1;
         int len1 = rhs.length() + 1;
         int[] cost = new int[len0];
@@ -196,23 +201,25 @@ public class CardsController implements Initializable, Settings {
         for (int i = 0; i < len0; i++) cost[i] = i;
         for (int j = 1; j < len1; j++) {
             new_cost[0] = j;
-            for(int i = 1; i < len0; i++) {
+            for (int i = 1; i < len0; i++) {
                 int match = (lhs.charAt(i - 1) == rhs.charAt(j - 1)) ? 0 : 1;
                 int cost_replace = cost[i - 1] + match;
-                int cost_insert  = cost[i] + 1;
-                int cost_delete  = new_cost[i - 1] + 1;
+                int cost_insert = cost[i] + 1;
+                int cost_delete = new_cost[i - 1] + 1;
                 new_cost[i] = Math.min(Math.min(cost_insert, cost_delete), cost_replace);
             }
-            int[] swap = cost; cost = new_cost; new_cost = swap;
+            int[] swap = cost;
+            cost = new_cost;
+            new_cost = swap;
         }
         return cost[len0 - 1];
     }
 
-    private double answeringTime(){
+    private double answeringTime() {
         return (double) (endAnswering - startAnswering) / 1_000_000_000;
     }
 
-    private void timeCorrection(long start, long end){
+    private void timeCorrection(long start, long end) {
         startAnswering = startAnswering + (end - start);
     }
 
@@ -224,6 +231,7 @@ public class CardsController implements Initializable, Settings {
             showButton.setText("Continue");
         } else if (showButton.getText().equals("Continue")) {
             //Get new phrase
+            if(phrase == null) return;
             phrase = cardsManager.getNextPhrase();
             questionLabel.setText(phrase.getTranslationAsOneString().replace("|", ", "));
             startAnswering = timerTime;
@@ -275,13 +283,14 @@ public class CardsController implements Initializable, Settings {
     }
 
     @FXML
-    private void showHint(){
+    private void showHint() {
         typoLabel.setVisible(true);
-        typoLabel.setText(answerTextField.getText() +  " -> " + phrase.getEngWord());
+        typoLabel.setText(answerTextField.getText() + " -> " + phrase.getEngWord());
         typoHintShown = true;
     }
+
     @FXML
-    private void hideHint(){
+    private void hideHint() {
         typoLabel.setVisible(false);
     }
 

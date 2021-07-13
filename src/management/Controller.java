@@ -10,7 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import settings.Settings;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +28,6 @@ public class Controller implements Initializable, Settings {
 
     boolean categoriesMenuIsActive = false;
     boolean categoryIsChosen = false;
-    private ArrayList<javafx.scene.control.Button> buttons;
 
     public static CardsManager getCardsManager() {
         return cardsManager;
@@ -42,14 +40,13 @@ public class Controller implements Initializable, Settings {
         } catch (FileNotFoundException e) {
             System.out.println("There is no default file!");
             System.exit(1);
-            //TODO: W momencie wykrycia braku pliku program powinnien prosić o podanie ścieżki ręcznie
         }
-        System.out.println("[INFO]Fiszki wczytane");
+        System.out.println("[INFO]Phrases are read");
         setActionForButtons();
     }
 
     private void setActionForButtons() {
-        buttons = new ArrayList<>();
+        ArrayList<Button> buttons = new ArrayList<>();
         buttons.add(buttonAll);
         buttons.add(buttonA);
         buttons.add(buttonAd);
@@ -71,7 +68,7 @@ public class Controller implements Initializable, Settings {
     }
 
     private void initializeByChosenSet(String set) throws UnhandledSituationException {
-        System.out.println("[INFO]Inicjalizacja za pomocą: " + set);
+        System.out.println("[INFO]Initialize with: " + set);
         switch (set) {
             case "Phrasal Verb" -> cardsManager.setMode(Mode.PHRASAL_VERB);
             case "Noun" -> cardsManager.setMode(Mode.NOUN);
@@ -136,7 +133,7 @@ public class Controller implements Initializable, Settings {
         paneFadeInRootPane.setCycleCount(1);
         paneFadeInRootPane.play();
         paneFadeInRootPane.setOnFinished(actionEvent -> {
-            AnchorPane transitionPane = null;
+            AnchorPane transitionPane;
             try {
                 transitionPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/transitionScene.fxml")));
                 rootPane.getChildren().setAll(transitionPane);
@@ -151,7 +148,7 @@ public class Controller implements Initializable, Settings {
                 paneFadeOutAmountLabel.setCycleCount(1);
                 paneFadeOutAmountLabel.play();
                 paneFadeOutAmountLabel.setOnFinished(event -> {
-                    AnchorPane cardsPane = null;
+                    AnchorPane cardsPane;
                     try {
                         cardsPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/cards.fxml")));
                         rootPane.getChildren().setAll(cardsPane);
@@ -164,7 +161,6 @@ public class Controller implements Initializable, Settings {
                         e.printStackTrace();
                     }
                 });
-
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -1,8 +1,11 @@
 package operation;
 
+import javafx.scene.image.ImageView;
 import management.CardsManager;
 import management.SettingsController;
+import management.WindowController;
 import settings.Settings;
+
 
 public class AutoSaveThread extends Thread implements Settings {
     int delay;
@@ -21,7 +24,14 @@ public class AutoSaveThread extends Thread implements Settings {
                 FileReader.writeCards(wordPath, cardsManager.autoSaveIterator());
             }
             try {
-                sleep(delay);
+                if(WindowController.synchroIcon != null) {
+                    WindowController.synchroIcon.setVisible(true);
+                }
+                sleep(1000);
+                if(WindowController.synchroIcon != null){
+                    WindowController.synchroIcon.setVisible(false);
+                }
+                sleep(delay - 1000);
             } catch (InterruptedException e) {
                 System.out.println("[WARNING]End of AutoSaving");
                 threadInterrupted = true;
@@ -30,5 +40,4 @@ public class AutoSaveThread extends Thread implements Settings {
         }
         System.out.println("[INFO]Thread is done");
     }
-
 }

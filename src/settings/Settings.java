@@ -3,7 +3,7 @@ package settings;
 public interface Settings {
     //Window Properties
     double WIDTH = 700;
-    double HEIGHT = 500;
+    double HEIGHT = 530;
 
     //Reading Phrases
     String wordPath = "src/source/words/cards.txt";

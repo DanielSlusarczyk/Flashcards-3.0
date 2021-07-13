@@ -2,17 +2,20 @@ package operation;
 
 import exceptions.IncorrectLineException;
 import management.CardsManager;
+import management.Controller;
 import phrases.Phrase;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 
 public class FileReader {
+    //Static
     private static List<String> dateList;
     private static List<Double> timeList;
 
@@ -71,6 +74,10 @@ public class FileReader {
             case "V" -> CardsManager.verbs.addCard(engWord, translation, correctAnswers, allAnswers, "V");
             default -> CardsManager.others.addCard(engWord, translation, correctAnswers, allAnswers, "O");
         }
+        //Add phrase to usedDictionary after making new cards while using
+        if (Controller.getCardsManager() != null) {
+            Controller.getCardsManager().getUsedDictionary().addCard(engWord, translation, correctAnswers, allAnswers, "O");
+        }
     }
 
     public static void writeCards(String outFile, Iterator<Phrase> iterator) {
@@ -99,22 +106,7 @@ public class FileReader {
         }
     }
 
-    public static String getPath(Phrase phrase){
-        return "src/source/words/stats/[" + phrase.hashCode() + "]" + phrase.getEngWord() + ".txt";
-    }
-
-    public static boolean editName(String oldPath, String newPath){
-        Path source = Paths.get(oldPath);
-        Path target = Paths.get(newPath);
-        try {
-            Files.move(source, target);
-        } catch (IOException e) {
-            return false;
-        }
-        return true;
-    }
-
-    public static void readPhraseStats(Phrase phrase){
+    public static void readPhraseStats(Phrase phrase) {
         timeList = new ArrayList<>();
         dateList = new ArrayList<>();
         Scanner readingFile;
@@ -131,7 +123,22 @@ public class FileReader {
         }
     }
 
-    public static List<String> getDateList(){
+    public static String getPath(Phrase phrase) {
+        return "src/source/words/stats/[" + phrase.hashCode() + "]" + phrase.getEngWord() + ".txt";
+    }
+
+    public static boolean editName(String oldPath, String newPath) {
+        Path source = Paths.get(oldPath);
+        Path target = Paths.get(newPath);
+        try {
+            Files.move(source, target);
+        } catch (IOException e) {
+            return true;
+        }
+        return false;
+    }
+
+    public static List<String> getDateList() {
         return dateList;
     }
 

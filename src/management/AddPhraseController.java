@@ -27,7 +27,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddPhraseController implements Initializable, Settings {
-    CardsManager cardsManager;
+    //FXML
     @FXML
     AnchorPane rootPane;
     @FXML
@@ -38,11 +38,14 @@ public class AddPhraseController implements Initializable, Settings {
     Button addTranslationButton, VButton, PVButton, AButton, AdButton, OButton, NButton;
     @FXML
     Label translationLabel, englishLabel, groupLabel;
-
-    String engWord = "";
-    List<String> translation;
-    List<Button> buttonsList;
-    String group = "";
+    //Basic:
+    private String engWord = "";
+    private List<String> translation;
+    private List<Button> buttonsList;
+    private String group = "";
+    //Own:
+    private CardsManager cardsManager;
+    //Graphics:
     private ImageView cancelImageView;
 
     @Override
@@ -77,7 +80,7 @@ public class AddPhraseController implements Initializable, Settings {
 
     @FXML
     private void addTranslationButtonAction() {
-        if(polishTextField.getText().equals("")) return;
+        if (polishTextField.getText().equals("")) return;
         try {
             FileInputStream inputCancelIcon = new FileInputStream("src/source/img/cancelIcon.png");
             Image imageCancelIcon = new Image(inputCancelIcon);
@@ -92,15 +95,13 @@ public class AddPhraseController implements Initializable, Settings {
         translationButton.getStylesheets().add("source/css/buttons.css");
         translationButton.setPrefHeight(30);
         translationButton.setCursor(Cursor.HAND);
-        translationButton.setOnAction(actionEvent -> {
-            translationHBox.getChildren().remove(translationButton);
-        });
+        translationButton.setOnAction(actionEvent -> translationHBox.getChildren().remove(translationButton));
         translationHBox.getChildren().add(translationButton);
         HBox.setMargin(translationButton, new Insets(0, 2, 0, 2));
     }
 
     @FXML
-    private void returnButtonAction(){
+    private void returnButtonAction() {
         try {
             AnchorPane cardsPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/cards.fxml")));
             rootPane.getChildren().setAll(cardsPane);

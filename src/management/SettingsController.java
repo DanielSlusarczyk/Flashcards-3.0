@@ -74,8 +74,15 @@ public class SettingsController implements Initializable, Settings {
     @FXML
     private void applyButtonAction() {
         autoSave = autoSaveTSwitch.switchedOn.get();
+        if(!autoSave && WindowController.synchroOffIcon != null){
+            WindowController.synchroIcon.setVisible(false);
+            WindowController.synchroOffIcon.setVisible(true);
+        }
         if(autoSave){
             CardsController.startThread();
+            if(WindowController.synchroOffIcon!= null){
+                WindowController.synchroOffIcon.setVisible(false);
+            }
         }
         newFirst = soundsTSwitch.switchedOn.get();
         tips = tipsTSwitch.switchedOn.get();

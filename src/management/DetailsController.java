@@ -1,7 +1,6 @@
 package management;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -10,13 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import operation.FileReader;
 import phrases.Phrase;
-
-import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DetailsController implements Initializable {
@@ -66,7 +62,7 @@ public class DetailsController implements Initializable {
         System.out.println("[INFO]Max value:" + getMax(dates));
         xAxis.setLowerBound(0.999999 * getMin(dates));
         xAxis.setUpperBound(1.000001 * getMax(dates));
-        xAxis.setTickUnit(((getMax(dates) - getMin(dates)) + 1000)/4);
+        xAxis.setTickUnit(((1.000001 * (getMax(dates)) - (0.999999 * getMin(dates))) + 1000)/4);
         final NumberAxis yAxis = new NumberAxis();
         final LineChart<Number, Number> lineChart =
                 new LineChart<>(xAxis, yAxis);
@@ -86,7 +82,7 @@ public class DetailsController implements Initializable {
 
     private double getMin(List<String> list){
         if(list.size() == 0){
-            return 0;
+            return (double) System.currentTimeMillis();
         }
         long min = Long.parseLong(list.get(0));
         for(String string : list){
@@ -98,10 +94,10 @@ public class DetailsController implements Initializable {
     }
 
     private double getMax(List<String> list){
-        if(list.size() == 0){
-            return 1;
-        }
         long max = 0;
+        if(list.size() == 0){
+            return (double)System.currentTimeMillis();
+        }
         for(String string : list){
             if(Long.parseLong(string) > max){
                 max = Long.parseLong(string);
