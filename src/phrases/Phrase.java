@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Phrase implements Comparable<Phrase> {
+    //Basic:
     private String engWord;
     private List<String> translation;
     private String group;
@@ -33,6 +34,16 @@ public class Phrase implements Comparable<Phrase> {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(engWord, translation.hashCode());
+    }
+
+    @Override
+    public String toString() {
+        return "[Flashcard]: " + engWord + " -> " + getTranslationAsOneString() + " Ratio: " + getRatio();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o instanceof Phrase) {
             //Translation
@@ -46,6 +57,7 @@ public class Phrase implements Comparable<Phrase> {
 
     @Override
     public int compareTo(Phrase o) {
+        //Two cards are equal only with the same translation and english word
         if (engWord.compareTo(o.getEngWord()) == 0) {
             List<String> shorterList = translation.size() <= o.getTranslation().size() ? translation : o.getTranslation();
             List<String> longerList = translation.size() > o.getTranslation().size() ? translation : o.getTranslation();
@@ -61,28 +73,18 @@ public class Phrase implements Comparable<Phrase> {
         return engWord.compareTo(o.getEngWord());
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(engWord, translation.hashCode());
-    }
-
-    @Override
-    public String toString() {
-        return "[Flashcard]: " + engWord + " -> " + getTranslationAsOneString() + " Ratio: " + getRatio();
-    }
-
     public void setStatistic(int nmbOfCorrectAnswer, int nmbOfAnswer) {
         this.nmbOfCorrectAnswer = nmbOfCorrectAnswer;
         this.nmbOfAnswer = nmbOfAnswer;
     }
 
     public String getTranslationAsOneString() {
-        StringBuilder result = new StringBuilder();
+        String result = "";
         for (String x : translation) {
-            result.append(x);
-            result.append("|");
+            result += x;
+            result += "|";
         }
-        return result.substring(0, result.toString().lastIndexOf("|"));
+        return result.substring(0, result.lastIndexOf("|"));
     }
 
     public String getEngWord() {
@@ -94,9 +96,13 @@ public class Phrase implements Comparable<Phrase> {
     }
 
     public double getRatio() {
-        if (nmbOfAnswer != 0)
-            return (double) nmbOfCorrectAnswer / (double) nmbOfAnswer;
-        return 1;
+        double value;
+        double correct = nmbOfCorrectAnswer;
+        double all = nmbOfAnswer;
+        value = Math.abs((correct/(all + 1))-(0.5/(all + 1)));
+        value = value > 1 ? 1 : value;
+        value = value < 0 ? 0 : value;
+        return  value;
     }
 
     public String getGroup() {
@@ -111,15 +117,15 @@ public class Phrase implements Comparable<Phrase> {
         return nmbOfAnswer;
     }
 
-    public void editEngWord(String newWord){
+    public void editEngWord(String newWord) {
         engWord = newWord;
     }
 
-    public void editTranslation(List<String> newTranslation){
+    public void editTranslation(List<String> newTranslation) {
         translation = newTranslation;
     }
 
-    public void editGroup(String group){
+    public void editGroup(String group) {
         this.group = group;
     }
 

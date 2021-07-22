@@ -18,7 +18,7 @@ public class Main extends Application implements Settings {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../source/fxml/window.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/source/fxml/window.fxml")));
         primaryStage.setTitle("FlashCards 3.0");
         primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
         primaryStage.initStyle(StageStyle.UNDECORATED);

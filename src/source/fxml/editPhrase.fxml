@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.EditPhraseController">
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditPhraseController">
     <children>
         <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -117,5 +117,10 @@
                 </ImageView>
             </graphic></Button>
       <Button id="saveSettingsButton" fx:id="removeButton" layoutX="355.0" layoutY="416.0" mnemonicParsing="false" onAction="#removeButtonAction" prefHeight="54.0" prefWidth="175.0" stylesheets="@../css/buttons.css" text="Remove" />
+      <ImageView fx:id="cancelImage" fitHeight="21.0" fitWidth="22.0" layoutX="7.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../img/cancelIcon.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

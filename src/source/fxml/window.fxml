@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="530.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.WindowController">
+<AnchorPane prefHeight="530.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.WindowController">
    <children>
       <AnchorPane fx:id="rootPane" layoutY="38.0" maxWidth="700.0" prefHeight="500.0" prefWidth="700.0" />
-      <AnchorPane fx:id="windowBar" maxWidth="700.0" prefHeight="25.0" prefWidth="700.0" style="-fx-background-color: #CFCFCF;">
+      <AnchorPane fx:id="windowBar" maxHeight="30.0" maxWidth="700.0" prefHeight="14.0" prefWidth="700.0" style="-fx-background-color: #CFCFCF;">
          <children>
             <Button id="transparentButton" alignment="TOP_CENTER" layoutX="650.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/buttons.css">
                <graphic>
@@ -21,7 +23,7 @@
                      </cursor>
                   </ImageView>
                </graphic></Button>
-            <Button id="transparentButton" alignment="TOP_CENTER" layoutX="610.0" mnemonicParsing="false" onAction="#minimizeButtonAction" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/buttons.css">
+            <Button id="transparentButton" alignment="TOP_CENTER" layoutX="614.0" mnemonicParsing="false" onAction="#minimizeButtonAction" prefHeight="30.0" prefWidth="30.0" stylesheets="@../css/buttons.css">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -33,16 +35,31 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fx:id="synchro" fitHeight="15.0" fitWidth="15.0" layoutX="26.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="synchro" fitHeight="15.0" fitWidth="15.0" layoutX="7.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/synchro.png" />
+                  <Image url="@../img/synchroGif.gif" />
                </image>
             </ImageView>
-            <ImageView fx:id="synchroOff" fitHeight="15.0" fitWidth="15.0" layoutX="9.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="synchroOff" fitHeight="15.0" fitWidth="15.0" layoutX="23.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/synchroOff.png" />
                </image>
             </ImageView>
+            <Label fx:id="infoLabel" alignment="CENTER" graphicTextGap="5.0" layoutX="64.0" layoutY="7.0" maxWidth="300.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+               <opaqueInsets>
+                  <Insets left="4.0" />
+               </opaqueInsets>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="synchroOff1" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/acceptGif.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
          </children>
       </AnchorPane>
    </children>

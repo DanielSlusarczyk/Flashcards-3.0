@@ -1,6 +1,7 @@
 package management;
 
 import comparators.RatioComparator;
+import controllers.SettingsController;
 import exceptions.UnhandledSituationException;
 import operation.FileReader;
 import phrases.Dictionary;
@@ -8,12 +9,12 @@ import phrases.Phrase;
 import settings.Settings;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
 public class CardsManager implements Settings, Iterable<Phrase> {
+    //Static:
     public static Dictionary phrasalVerbs;
     public static Dictionary nouns;
     public static Dictionary adjectives;
@@ -21,13 +22,12 @@ public class CardsManager implements Settings, Iterable<Phrase> {
     public static Dictionary verbs;
     public static Dictionary others;
     public static Dictionary allWords;
-    private static List<Dictionary> dictionaryList;
-    private Mode mode;
+    //Basic:
     private Dictionary usedDictionary;
     private double sessionRatio;
     private int phraseCounter;
 
-    public CardsManager(String inFile) throws FileNotFoundException {
+    public CardsManager() throws FileNotFoundException {
         phrasalVerbs = new Dictionary("Phrasal Verbs");
         nouns = new Dictionary("Nouns");
         verbs = new Dictionary("Verbs");
@@ -35,15 +35,7 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         adverbs = new Dictionary("Adverbs");
         others = new Dictionary("Others");
         allWords = new Dictionary("All Words");
-        FileReader.readCards(inFile);
-        dictionaryList = new ArrayList<>();
-        dictionaryList.add(phrasalVerbs);
-        dictionaryList.add(nouns);
-        dictionaryList.add(adjectives);
-        dictionaryList.add(adverbs);
-        dictionaryList.add(others);
-        dictionaryList.add(allWords);
-        dictionaryList.add(verbs);
+        FileReader.readCards();
     }
 
     @Override
@@ -58,7 +50,7 @@ public class CardsManager implements Settings, Iterable<Phrase> {
                 throw new UnhandledSituationException("[WARNING]The used dictionary contains no phrases!");
             }
         } catch (UnhandledSituationException exception) {
-            System.out.println(exception);
+            System.out.println(exception.toString());
             return null;
         }
         if (SettingsController.newFirst) {
@@ -70,7 +62,8 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         }
         //Random phrase every AMOUNT_OF_CARD_BETWEEN_RANDOM
         phraseCounter++;
-        if (phraseCounter % AMOUNT_OF_CARDS_BETWEEN_RANDOM == 0) {
+        int randomFrequency = SettingsController.frequency != AMOUNT_OF_CARDS_BETWEEN_RANDOM ? SettingsController.frequency : AMOUNT_OF_CARDS_BETWEEN_RANDOM;
+        if (phraseCounter % randomFrequency == 0) {
             int number = new Random().nextInt(usedDictionary.size());
             System.out.println("[INFO]Random phrase: Number:" + number);
             return usedDictionary.get(number);
@@ -102,8 +95,8 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         return usedDictionary.getName();
     }
 
-    public Dictionary getAllWords() {
-        return allWords;
+    public Dictionary getWords() {
+        return usedDictionary;
     }
 
     public int getNmb() {
@@ -115,7 +108,6 @@ public class CardsManager implements Settings, Iterable<Phrase> {
     }
 
     public void setMode(Mode mode) {
-        this.mode = mode;
         switch (mode) {
             case ALL -> usedDictionary = new Dictionary("All", new RatioComparator(), allWords);
             case NOUN -> usedDictionary = new Dictionary("Noun", new RatioComparator(), nouns);
@@ -125,7 +117,6 @@ public class CardsManager implements Settings, Iterable<Phrase> {
             case PHRASAL_VERB -> usedDictionary = new Dictionary("Phrasal Verb", new RatioComparator(), phrasalVerbs);
             case OTHERS -> usedDictionary = new Dictionary("Others", new RatioComparator(), others);
         }
-        dictionaryList.add(usedDictionary);
         sessionRatio = usedDictionary.getTheHighestRatio();
     }
 
@@ -158,9 +149,9 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         String oldPath = FileReader.getPath(phrase);
         phrase.editEngWord(newWord);
         if (FileReader.editName(oldPath, FileReader.getPath(phrase))) {
-            System.out.println("[INFO] Problem with new name!");
-            System.out.println("[INFO] oldPath: " + oldPath);
-            System.out.println("[INFO] newPath: " + FileReader.getPath(phrase));
+            System.out.println("[INFO]Problem with new name!");
+            System.out.println("[INFO]oldPath: " + oldPath);
+            System.out.println("[INFO]newPath: " + FileReader.getPath(phrase));
         }
     }
 
@@ -168,7 +159,7 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         String oldPath = FileReader.getPath(phrase);
         phrase.editTranslation(newTranslation);
         if (FileReader.editName(oldPath, FileReader.getPath(phrase))) {
-            System.out.println("[INFO] Problem with new name!");
+            System.out.println("[INFO]Problem with new name!");
         }
     }
 
@@ -191,9 +182,4 @@ public class CardsManager implements Settings, Iterable<Phrase> {
         }
         phrase.editGroup(group);
     }
-
-    public void addPhraseToUsed(Phrase phrase) {
-        usedDictionary.add(phrase);
-    }
-
 }

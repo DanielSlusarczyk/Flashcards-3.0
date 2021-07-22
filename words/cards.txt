@@ -1,0 +1,275 @@
+<Ang>act up<Pol>nawalać (o sprzęcie)|źle się zachowywać<Result>2<>2<Grp>PV
+<Ang>adjacent<Pol>sąsiedni<Result>3<>3<Grp>AD
+<Ang>aftermath<Pol>następstwo<Result>3<>4<Grp>N
+<Ang>amount to<Pol>wynosić coś (łączna wartość)<Result>5<>6<Grp>PV
+<Ang>approach<Pol>zbliżać się<Result>0<>0<Grp>V
+<Ang>apricot<Pol>morela<Result>4<>4<Grp>N
+<Ang>assessment<Pol>oszacowanie|ocena<Result>0<>0<Grp>N
+<Ang>asset<Pol>atut|zaleta<Result>0<>0<Grp>N
+<Ang>at one's own pace<Pol>we własnym tempie<Result>0<>0<Grp>O
+<Ang>aubergine<Pol>bakłażan<Result>0<>0<Grp>N
+<Ang>auxiliary<Pol>pomocniczy<Result>0<>1<Grp>AD
+<Ang>back down<Pol>wycofać się|dać za wygraną<Result>1<>7<Grp>PV
+<Ang>bandwidth<Pol>przepustowość łącza<Result>0<>0<Grp>N
+<Ang>bankruptcy<Pol>bankructwo |niewypłacalność<Result>6<>7<Grp>N
+<Ang>be around<Pol>istnieć|być w pobliżu<Result>2<>2<Grp>PV
+<Ang>be cut out to be (stb)<Pol>być stworzonym do czegoś<Result>0<>2<Grp>PV
+<Ang>be fed up with (sth)<Pol>mieć dosyć czegoś<Result>4<>4<Grp>PV
+<Ang>be in<Pol>być w domu|przyjechać (o autobusie)<Result>3<>3<Grp>PV
+<Ang>bespoke<Pol>wykonany na zamówienie<Result>5<>5<Grp>AD
+<Ang>best man<Pol>świadek|drużba<Result>0<>0<Grp>N
+<Ang>bewildered<Pol>zdezorientowy<Result>0<>0<Grp>AD
+<Ang>bill<Pol>projekt ustawy<Result>2<>2<Grp>N
+<Ang>biodegradable<Pol>biodegradowalny<Result>2<>2<Grp>AD
+<Ang>bleach<Pol>wybielacz<Result>2<>3<Grp>N
+<Ang>blend in<Pol>wmieszać się (w tłum, otoczenie)<Result>1<>1<Grp>PV
+<Ang>bounce back<Pol>pozbierać się|dojść do siebie<Result>3<>7<Grp>PV
+<Ang>break even<Pol>wyjść na zero<Result>5<>6<Grp>PV
+<Ang>break up<Pol>czasowo zamykać<Result>8<>9<Grp>PV
+<Ang>bring about<Pol>spowodować<Result>0<>4<Grp>PV
+<Ang>bring in (sth)<Pol>wprowadzać coś (nowe prawo)<Result>0<>2<Grp>PV
+<Ang>bring it home to (stb)<Pol>uświadamiać komuś<Result>0<>1<Grp>PV
+<Ang>brush up<Pol>odświeżyć|podszlifować (język)<Result>3<>3<Grp>PV
+<Ang>bureaucracy<Pol>biurokracja<Result>0<>0<Grp>N
+<Ang>burn out<Pol>wypalić się (też zawodowo)<Result>3<>3<Grp>PV
+<Ang>busybody<Pol>intrygant|plotkarz<Result>0<>1<Grp>N
+<Ang>by nature<Pol>z natury<Result>0<>0<Grp>O
+<Ang>call for a tow truck<Pol>wezwać autolawetę<Result>2<>2<Grp>O
+<Ang>catch on<Pol>przyjąć się<Result>2<>3<Grp>PV
+<Ang>catch on (sth)<Pol>zaczepić się o coś<Result>3<>3<Grp>PV
+<Ang>celery<Pol>seler<Result>2<>2<Grp>N
+<Ang>certainty<Pol>rzecz pewna|pewność<Result>4<>9<Grp>N
+<Ang>check with (stb)<Pol>zapytać o pozwolenie<Result>3<>5<Grp>PV
+<Ang>cite<Pol>cytować<Result>2<>2<Grp>V
+<Ang>clearance<Pol>pozwolenie<Result>2<>3<Grp>N
+<Ang>cod<Pol>dorsz<Result>1<>1<Grp>N
+<Ang>come between (stb) and (stb)<Pol>poróżnić kogoś z kimś<Result>8<>9<Grp>PV
+<Ang>come down with<Pol>zachorować na coś<Result>3<>6<Grp>PV
+<Ang>come off (sth)<Pol>skończyć brać coś<Result>0<>2<Grp>PV
+<Ang>commodious<Pol>przestronny|szeroki<Result>0<>0<Grp>AD
+<Ang>common denominator<Pol>wspólny mianownik<Result>4<>4<Grp>N
+<Ang>common sense<Pol>zdrowy rozsądek<Result>0<>0<Grp>N
+<Ang>compartment<Pol>przedział<Result>0<>0<Grp>N
+<Ang>compulsory<Pol>obowiązkowy<Result>0<>0<Grp>AD
+<Ang>consecutive<Pol>kolejny<Result>0<>0<Grp>AD
+<Ang>contribute<Pol>wnosić (wkład)<Result>0<>0<Grp>V
+<Ang>cornerstone<Pol>kamień węgielny<Result>2<>2<Grp>N
+<Ang>countenance<Pol>oblicze|rysa|mina<Result>5<>6<Grp>N
+<Ang>counterport<Pol>odpowiednik<Result>0<>0<Grp>N
+<Ang>courgette<Pol>cukinia<Result>3<>6<Grp>N
+<Ang>court order<Pol>nakaz sądowy<Result>0<>0<Grp>N
+<Ang>courtesy of (stb)<Pol>dzięki czyjejś uprzejmności<Result>0<>0<Grp>O
+<Ang>crackdown<Pol>rozprawienie<Result>0<>3<Grp>N
+<Ang>cramp<Pol>skurcz<Result>4<>4<Grp>N
+<Ang>crib<Pol>kołyska<Result>2<>3<Grp>N
+<Ang>cruelty<Pol>okrucieństwo<Result>6<>6<Grp>N
+<Ang>deaf<Pol>głuchy|niesłyszący<Result>6<>6<Grp>AD
+<Ang>denial<Pol>zaprzeczenie|negacja<Result>3<>3<Grp>N
+<Ang>depict<Pol>przedstawić|obrazować<Result>0<>0<Grp>V
+<Ang>detain<Pol>trzymać (w areszcie)|opóźniać (kogoś)<Result>0<>0<Grp>V
+<Ang>discernible<Pol>zauważalny<Result>4<>5<Grp>AD
+<Ang>disciple<Pol>wierny uczeń<Result>0<>0<Grp>N
+<Ang>disclose<Pol>ujawnić<Result>4<>7<Grp>V
+<Ang>distarted<Pol>zniekształcony<Result>6<>6<Grp>AD
+<Ang>distinguish<Pol>odróżniać|wyróżniać<Result>0<>0<Grp>V
+<Ang>distinguish<Pol>odróżniać|rozróżniać|rozpoznawać<Result>0<>0<Grp>V
+<Ang>divine<Pol>boski|boży<Result>7<>7<Grp>AD
+<Ang>drag on<Pol>ciągnąć się (zbyt długo)<Result>6<>7<Grp>PV
+<Ang>drop off<Pol>zasnąć|przysnąć<Result>3<>4<Grp>PV
+<Ang>drown one's sorrow<Pol>topić smutki w alkoholu<Result>2<>2<Grp>O
+<Ang>early riser<Pol>ranny ptaszek<Result>0<>0<Grp>N
+<Ang>edifice<Pol>gmach<Result>0<>0<Grp>N
+<Ang>eerie<Pol>upiorny<Result>3<>3<Grp>AD
+<Ang>elict<Pol>uzyskiwać (obietnicę)|wzbudzać (uśmiech)<Result>0<>0<Grp>V
+<Ang>eligible<Pol>spełniający wymagania<Result>0<>0<Grp>AD
+<Ang>endure<Pol>znosić|wytrzymać<Result>4<>4<Grp>V
+<Ang>engage<Pol>zajmować się|przyciągać uwagę<Result>3<>8<Grp>V
+<Ang>enroll<Pol>zapisywać<Result>0<>0<Grp>V
+<Ang>equate (sth) with (sth)<Pol>utożsamiać coś z czymś<Result>3<>3<Grp>PV
+<Ang>eviction notice<Pol>nakaz eksmisji<Result>4<>4<Grp>N
+<Ang>exceed<Pol>przekroczyć|przewyższyć<Result>3<>4<Grp>V
+<Ang>exempt from<Pol>zwolniony z<Result>3<>4<Grp>PV
+<Ang>exruciating<Pol>nieznośny|potworny<Result>2<>4<Grp>AD
+<Ang>extinction<Pol>wymarcie<Result>0<>0<Grp>N
+<Ang>fate<Pol>los|przeznaczenie<Result>5<>5<Grp>N
+<Ang>feel free<Pol>nie krępuj się<Result>2<>2<Grp>PV
+<Ang>fierce<Pol>zażarty|dziki|srogi<Result>0<>0<Grp>AD
+<Ang>finding<Pol>odkrycie|orzeczenie<Result>0<>0<Grp>N
+<Ang>findings<Pol>wynik|rezultat<Result>0<>0<Grp>N
+<Ang>fuse<Pol>bezpiecznik<Result>3<>3<Grp>N
+<Ang>game<Pol>dziczyzna<Result>1<>1<Grp>N
+<Ang>get (stb) down<Pol>zasmucić kogoś<Result>0<>1<Grp>PV
+<Ang>get across<Pol>wyjaśnić (co się ma na myśli)<Result>0<>1<Grp>PV
+<Ang>get by<Pol>radzić sobie finansowo<Result>3<>5<Grp>PV
+<Ang>get round to (v + ing)<Pol>zabrać się za coś<Result>4<>10<Grp>PV
+<Ang>get to know (stb)<Pol>poznawać kogoś<Result>0<>4<Grp>O
+<Ang>give in<Pol>poddawać się|ulec|ugiąć się<Result>3<>3<Grp>PV
+<Ang>give off<Pol>wydzielać<Result>2<>2<Grp>PV
+<Ang>go off (sth)<Pol>przestać coś lubić<Result>1<>7<Grp>PV
+<Ang>go to any lengths<Pol>używać wszystkich możliwych metod<Result>3<>3<Grp>PV
+<Ang>grow on (stb)<Pol>podobać się komuś coraz bardziej<Result>4<>4<Grp>PV
+<Ang>grudge<Pol>niechęć|uraza<Result>6<>7<Grp>N
+<Ang>hand (sth) out<Pol>przekazywać coś<Result>3<>5<Grp>PV
+<Ang>harassment<Pol>nękanie|dokuczanie|molestowanie<Result>8<>12<Grp>N
+<Ang>harbour<Pol>port<Result>0<>0<Grp>N
+<Ang>have (stb) on<Pol>nabierać kogoś<Result>2<>2<Grp>PV
+<Ang>hideout<Pol>kryjówka<Result>0<>0<Grp>N
+<Ang>hold (stb) accountable for (sth)<Pol>pociągać kogoś do odpowiedzialności<Result>3<>4<Grp>PV
+<Ang>hold back<Pol>zataić<Result>5<>5<Grp>PV
+<Ang>hold out<Pol>wystarczyć<Result>7<>14<Grp>PV
+<Ang>hold up<Pol>opóźniać się|trzymać się<Result>4<>9<Grp>PV
+<Ang>homicide<Pol>morderstwo (USA formal)<Result>0<>0<Grp>N
+<Ang>hone skills<Pol>szlifować umiejętności<Result>5<>5<Grp>O
+<Ang>impoverishment<Pol>wyniszczenie<Result>0<>0<Grp>N
+<Ang>impromtu<Pol>improwizowany<Result>3<>3<Grp>AD
+<Ang>in a bid to<Pol>próbując|szukając<Result>0<>1<Grp>O
+<Ang>inevitably<Pol>nieuchronnie<Result>0<>0<Grp>AD
+<Ang>infant<Pol>niemowle|noworodek<Result>2<>3<Grp>N
+<Ang>insurgent<Pol>powstaniec|buntownik<Result>3<>5<Grp>N
+<Ang>integrity<Pol>prawość|uczciwość<Result>1<>1<Grp>N
+<Ang>intermittent<Pol>sporadyczny|przerywany<Result>0<>0<Grp>AD
+<Ang>irreparably<Pol>nieodwracalnie<Result>4<>4<Grp>AD
+<Ang>jot down<Pol>zanotować<Result>3<>3<Grp>PV
+<Ang>jumper<Pol>kable do urochomienia auta<Result>2<>2<Grp>N
+<Ang>knack<Pol>wprawa|talent<Result>4<>4<Grp>N
+<Ang>lane<Pol>pas ruchu<Result>8<>9<Grp>N
+<Ang>laughing matter<Pol>błaha sprawa<Result>4<>4<Grp>N
+<Ang>lean out<Pol>wychylać się<Result>0<>2<Grp>PV
+<Ang>leap year<Pol>rok przystępny<Result>6<>6<Grp>N
+<Ang>leek<Pol>por<Result>3<>4<Grp>N
+<Ang>let on<Pol>wygadać się|nie utrzymać w tajemnicy<Result>0<>4<Grp>PV
+<Ang>letdown<Pol>zawiedzione nadzieje<Result>3<>5<Grp>N
+<Ang>linger over (sth)<Pol>zasiedzieć się przy czymś<Result>3<>5<Grp>PV
+<Ang>long-term<Pol>długo terminowy<Result>2<>2<Grp>AD
+<Ang>look over (sth)<Pol>przeglądać coś|sprawdzać coś<Result>6<>8<Grp>PV
+<Ang>lose track of time<Pol>stracić rachubę czasu<Result>3<>4<Grp>PV
+<Ang>loundry<Pol>pranie<Result>5<>5<Grp>N
+<Ang>maid<Pol>pokojówka<Result>3<>3<Grp>N
+<Ang>make a curtsy<Pol>ukłonić się<Result>1<>1<Grp>O
+<Ang>make amends<Pol>poprawiać się na lepsze<Result>4<>4<Grp>PV
+<Ang>make an appearance<Pol>pokazywać się|występować<Result>11<>13<Grp>PV
+<Ang>make oneself at home<Pol>rozgościć się<Result>5<>5<Grp>PV
+<Ang>make out<Pol>powodzić się<Result>3<>3<Grp>PV
+<Ang>make out (sth)<Pol>dostrzegać coś|zrozumieć coś<Result>6<>7<Grp>PV
+<Ang>masterstroke<Pol>mistrzowskie posunięcie<Result>8<>8<Grp>N
+<Ang>mess (stb) up<Pol>dołożyć komuś (pobić)<Result>2<>3<Grp>PV
+<Ang>mess (sth) up<Pol>psuć|rujnować coś<Result>9<>14<Grp>PV
+<Ang>midwife<Pol>położna<Result>0<>0<Grp>N
+<Ang>minute<Pol>maleńki|drobny<Result>2<>2<Grp>AD
+<Ang>momentarily<Pol>chwilowo|przez chwilę<Result>3<>3<Grp>A
+<Ang>moot point<Pol>punkt sporny<Result>4<>4<Grp>N
+<Ang>morbidly<Pol>chorobliwie<Result>2<>2<Grp>A
+<Ang>nasty<Pol>okropny<Result>0<>0<Grp>AD
+<Ang>national anthem<Pol>hymn narodowy<Result>0<>0<Grp>N
+<Ang>navel-gazing<Pol>zapatrzenie w siebie<Result>2<>2<Grp>N
+<Ang>obituary<Pol>nekrolog<Result>3<>3<Grp>N
+<Ang>obtain<Pol>uzyskiwać|otrzymywać<Result>0<>0<Grp>V
+<Ang>offset<Pol>wyrównanie strat<Result>0<>2<Grp>N
+<Ang>offset<Pol>wynagradzać<Result>0<>2<Grp>V
+<Ang>onset<Pol>początek<Result>3<>5<Grp>N
+<Ang>orphanage<Pol>sierociniec|dom dziecka<Result>0<>0<Grp>N
+<Ang>ostensibly<Pol>pozornie|rzekomo<Result>0<>4<Grp>AD
+<Ang>outlay<Pol>nakład|wydatek<Result>2<>2<Grp>N
+<Ang>parsley<Pol>natka pietruszki<Result>3<>3<Grp>N
+<Ang>pass on<Pol>przekazywać<Result>0<>2<Grp>PV
+<Ang>pass out<Pol>mdleć<Result>3<>4<Grp>PV
+<Ang>per capita<Pol>na jednego mieszkańca|na głowę<Result>0<>0<Grp>O
+<Ang>periodic classification<Pol>układ okresowy (pierwiastków)<Result>0<>0<Grp>N
+<Ang>perplex<Pol>zakłopotać<Result>3<>3<Grp>V
+<Ang>pervasive<Pol>wszechobecny<Result>0<>0<Grp>AD
+<Ang>phase (sth) out<Pol>wycofywać coś stopniowo<Result>16<>18<Grp>PV
+<Ang>pitch<Pol>poziom|szczyt|gadka|kąt|stoisko handlowe<Result>0<>0<Grp>N
+<Ang>plot<Pol>wykres|działka|wątek<Result>4<>4<Grp>N
+<Ang>plot<Pol>spiskować<Result>4<>5<Grp>V
+<Ang>prejudiced<Pol>uprzedzony<Result>3<>3<Grp>AD
+<Ang>presumption<Pol>przypuszczenie<Result>3<>3<Grp>N
+<Ang>presumptuous<Pol>arogancki|bezczelny<Result>2<>2<Grp>AD
+<Ang>pride oneself on<Pol>szczycić się<Result>2<>2<Grp>PV
+<Ang>proceed<Pol>zabierać się|przystępować<Result>0<>0<Grp>V
+<Ang>proficient<Pol>biegły<Result>0<>0<Grp>AD
+<Ang>prominent<Pol>czołowy|wybitny<Result>0<>0<Grp>AD
+<Ang>put (stb) through<Pol>połączyć kogoś z<Result>0<>2<Grp>PV
+<Ang>rear of the car<Pol>tył samochodu<Result>3<>3<Grp>N
+<Ang>reconcile<Pol>pogodzić<Result>1<>1<Grp>V
+<Ang>reluctant<Pol>niechętny<Result>0<>0<Grp>AD
+<Ang>resemble<Pol>przypominać (kogoś/coś)<Result>0<>0<Grp>V
+<Ang>resolution<Pol>uchwała|decyzja|rozdzielczość<Result>0<>0<Grp>N
+<Ang>result in (sth)<Pol>kończyć się czymś<Result>0<>1<Grp>PV
+<Ang>run down<Pol>zmniejszać nakłady<Result>5<>5<Grp>PV
+<Ang>salvation<Pol>zbawienie|odkupienie<Result>3<>3<Grp>N
+<Ang>see (stb) off<Pol>upomnieć kogoś<Result>4<>5<Grp>PV
+<Ang>see (stb) off<Pol>odprowadzić kogoś<Result>2<>2<Grp>PV
+<Ang>seize<Pol>chwytać coś|zawładnąć czymś<Result>0<>0<Grp>V
+<Ang>self-actualization<Pol>samorealizacja<Result>3<>3<Grp>N
+<Ang>self-sustainable<Pol>samowystarczalny<Result>0<>0<Grp>AD
+<Ang>servitude<Pol>niewola|okupacja<Result>3<>5<Grp>N
+<Ang>set (sth) off<Pol>włączyć coś<Result>2<>4<Grp>PV
+<Ang>set back<Pol>opóźniać<Result>2<>3<Grp>PV
+<Ang>set off<Pol>wyruszyć<Result>7<>8<Grp>PV
+<Ang>shelf life<Pol>okres przydatność<Result>0<>0<Grp>N
+<Ang>shrink<Pol>kurczyć się (w praniu)|maleć<Result>0<>0<Grp>V
+<Ang>sibling rivalry<Pol>rywalizacja rodzeństwa<Result>0<>0<Grp>N
+<Ang>silhouette<Pol>sylwetka<Result>0<>0<Grp>N
+<Ang>silver lining<Pol>iskierka nadziei<Result>5<>5<Grp>N
+<Ang>so-called<Pol>rzekomy<Result>2<>2<Grp>AD
+<Ang>solicitor<Pol>radca prawny|adwokat<Result>6<>6<Grp>N
+<Ang>sombre<Pol>ponury|złowieszczy<Result>4<>4<Grp>AD
+<Ang>soothsayer<Pol>prorok|jasnowidz<Result>0<>0<Grp>N
+<Ang>spark<Pol>wywoływać coś<Result>0<>0<Grp>V
+<Ang>speak highly of (stb)<Pol>bardzo dobrze o kimś mówić<Result>2<>4<Grp>PV
+<Ang>spotlessly<Pol>nieskazitelnie<Result>6<>6<Grp>A
+<Ang>spouse<Pol>współmałżonek|małżonek|małżonka<Result>4<>4<Grp>N
+<Ang>spy<Pol>szpieg<Result>0<>0<Grp>N
+<Ang>spy<Pol>szpiegować<Result>0<>0<Grp>V
+<Ang>stand in<Pol>zastępować<Result>3<>5<Grp>PV
+<Ang>stand out<Pol>odznaczać się|rzucać się w oczy<Result>0<>2<Grp>PV
+<Ang>stand up to<Pol>stawić komuś czoła<Result>1<>1<Grp>PV
+<Ang>stay up<Pol>chodzić późno spać<Result>4<>4<Grp>PV
+<Ang>stipulation<Pol>zastrzeżenie (w umowie)<Result>1<>1<Grp>N
+<Ang>strait<Pol>kłopot|problem<Result>4<>4<Grp>N
+<Ang>subsequent<Pol>kolejny<Result>4<>6<Grp>AD
+<Ang>suntan<Pol>opalenizna<Result>0<>0<Grp>N
+<Ang>surveillance<Pol>inwigilacja<Result>0<>0<Grp>N
+<Ang>swan<Pol>łabądź<Result>0<>0<Grp>N
+<Ang>swear by<Pol>wierzyć w skuteczność działania czegoś<Result>4<>5<Grp>PV
+<Ang>sweep<Pol>zamiatać<Result>0<>0<Grp>V
+<Ang>sympathetically<Pol>współczująco<Result>2<>2<Grp>A
+<Ang>take off<Pol>odnieść nagły sukces|startować o samolocie<Result>2<>2<Grp>PV
+<Ang>take over<Pol>objąć|przejąć<Result>4<>5<Grp>PV
+<Ang>take pride in<Pol>odczuwać dumę z<Result>2<>2<Grp>PV
+<Ang>talk (stb) into (sth)<Pol>namówić kogoś do czegoś<Result>3<>5<Grp>PV
+<Ang>talk (sth) over<Pol>omówić coś|przedyskutować coś<Result>3<>3<Grp>PV
+<Ang>talk (sth) over<Pol>przedyskutować coś|omówić coś<Result>3<>3<Grp>PV
+<Ang>talk back<Pol>pyskować<Result>2<>2<Grp>PV
+<Ang>talk down<Pol>umniejszać<Result>0<>3<Grp>PV
+<Ang>tantalizing<Pol>ujmujący<Result>3<>3<Grp>AD
+<Ang>testimony<Pol>zeznania|świadectwo<Result>2<>2<Grp>N
+<Ang>third party<Pol>strona trzecia<Result>10<>10<Grp>N
+<Ang>threshold<Pol>próg (mieszkania)|próg (bólu)<Result>5<>5<Grp>N
+<Ang>throwaway<Pol>jednorazowy|jednorazowego użytku<Result>0<>0<Grp>AD
+<Ang>treacherous<Pol>arogancki<Result>4<>6<Grp>AD
+<Ang>turn (stb) down<Pol>odmówić komuś<Result>0<>4<Grp>PV
+<Ang>turnip<Pol>kalarepa<Result>0<>0<Grp>N
+<Ang>uneasy<Pol>niespokojny|nieswój<Result>6<>6<Grp>AD
+<Ang>unlawful<Pol>bezprawny<Result>0<>0<Grp>AD
+<Ang>unswerving<Pol>stały|niezmienny<Result>2<>3<Grp>AD
+<Ang>unveil<Pol>odkrywać|odsłaniać<Result>2<>2<Grp>V
+<Ang>upkeep<Pol>utrzymanie<Result>2<>2<Grp>N
+<Ang>verge<Pol>brzeg|skraj<Result>3<>3<Grp>N
+<Ang>virtue<Pol>cnota|mocna strona<Result>0<>0<Grp>N
+<Ang>vital<Pol>niezbędny|podstawowy<Result>0<>0<Grp>AD
+<Ang>volatility<Pol>zmienność<Result>0<>0<Grp>N
+<Ang>voraciously<Pol>żarłocznie|zachłannie<Result>6<>6<Grp>A
+<Ang>vow<Pol>przysięga<Result>2<>2<Grp>N
+<Ang>vow<Pol>ślubować<Result>3<>3<Grp>V
+<Ang>warfare<Pol>walka|wojna|działania wojenne<Result>3<>3<Grp>N
+<Ang>well-earned<Pol>zasłużony<Result>3<>3<Grp>AD
+<Ang>whatsoever<Pol>cokolwiek|jakkolwiek<Result>4<>4<Grp>N
+<Ang>wind down<Pol>odprężyć się<Result>7<>8<Grp>PV
+<Ang>wit<Pol>wiedzieć<Result>3<>3<Grp>V
+<Ang>wit<Pol>dowcip|inteligencja<Result>24<>24<Grp>N
+<Ang>work off<Pol>pozbyć się czegoś|odpracować coś<Result>18<>20<Grp>PV
+<Ang>worship<Pol>ubóstwiać<Result>0<>0<Grp>V
+<Ang>would-be<Pol>niedoszły|aspirujący<Result>14<>17<Grp>PV
+<Ang>yearn for (sth)<Pol>tęsknić do czegoś|pragnąć czegoś<Result>11<>12<Grp>PV
+<Ang>yes-man<Pol>potakiwacz<Result>2<>2<Grp>N

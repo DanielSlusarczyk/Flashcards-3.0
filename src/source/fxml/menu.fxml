@@ -4,8 +4,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.Controller">
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
    <children>
       <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -14,96 +15,99 @@
       </ImageView>
       <Pane prefHeight="500.0" prefWidth="700.0">
          <children>
-            <Pane fx:id="p5" layoutX="51.0" layoutY="130.0" prefHeight="240.0" prefWidth="240.0" visible="false">
+            <Pane fx:id="p5" layoutX="71.0" layoutY="152.0" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
-                  <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/blueHexagon.png" />
                      </image>
                   </ImageView>
-                  <Button id="categoriesButton" fx:id="buttonN" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Noun" textAlignment="CENTER">
+                  <Button id="categoriesButton" fx:id="buttonN" alignment="CENTER" contentDisplay="TOP" layoutX="25.0" layoutY="60.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/buttons.css" text="Noun" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="p1" layoutX="320.0" layoutY="-23.0" prefHeight="240.0" prefWidth="240.0" visible="false">
+            <Pane fx:id="p6" layoutX="161.0" layoutY="-5.0" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
-                  <ImageView fitHeight="240.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/yellowHexagon.png" />
-                     </image>
-                  </ImageView>
-                  <Button id="categoriesButton" fx:id="buttonV" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Verb">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane fx:id="p3" layoutX="317.0" layoutY="284.0" prefHeight="240.0" prefWidth="240.0" visible="false">
-               <children>
-                  <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/purpleHexagon.png" />
                      </image>
                   </ImageView>
-                  <Button id="categoriesButton" fx:id="buttonAd" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Adjective">
+                  <Button id="categoriesButton" fx:id="buttonO" alignment="CENTER" contentDisplay="TOP" layoutX="25.0" layoutY="60.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/buttons.css" text="Other" textAlignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="p2" layoutX="408.0" layoutY="130.0" prefHeight="240.0" prefWidth="240.0" stylesheets="@../css/buttons.css" visible="false">
+            <Pane fx:id="p1" layoutX="339.0" layoutY="-5.0" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
-                  <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/yellowHexagon.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="categoriesButton" fx:id="buttonV" alignment="CENTER" contentDisplay="TOP" layoutX="25.0" layoutY="60.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/buttons.css" text="Verb">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="p2" layoutX="429.0" layoutY="146.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/buttons.css" visible="false">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/blueHexagon.png" />
                      </image>
                   </ImageView>
-                  <Button id="categoriesButton" fx:id="buttonPV" alignment="CENTER" contentDisplay="CENTER" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Phrasal Verb" textAlignment="CENTER" wrapText="true">
+                  <Button id="categoriesButton" fx:id="buttonPV" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="60.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/buttons.css" text="Phrasal Verb" textAlignment="CENTER" wrapText="true">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="p4" layoutX="139.0" layoutY="284.0" prefHeight="240.0" prefWidth="240.0" visible="false">
+            <Pane fx:id="p3" layoutX="339.0" layoutY="305.0" prefHeight="200.0" prefWidth="200.0" visible="false">
                <children>
-                  <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/yellowHexagon.png" />
-                     </image>
-                  </ImageView>
-                  <Button id="categoriesButton" fx:id="buttonA" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Adverb">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane fx:id="p6" layoutX="141.0" layoutY="-23.0" prefHeight="240.0" prefWidth="240.0" visible="false">
-               <children>
-                  <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/purpleHexagon.png" />
                      </image>
                   </ImageView>
-                  <Button id="categoriesButton" fx:id="buttonO" alignment="CENTER" contentDisplay="TOP" layoutX="35.0" layoutY="80.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" stylesheets="@../css/buttons.css" text="Other" textAlignment="CENTER">
+                  <Button id="categoriesButton" fx:id="buttonAd" alignment="CENTER" contentDisplay="TOP" layoutX="25.0" layoutY="60.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/buttons.css" text="Adjective">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                </children>
             </Pane>
-            <Button id="categoryButton" fx:id="buttonAll" alignment="CENTER" contentDisplay="CENTER" layoutX="280.0" layoutY="199.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" stylesheets="@../css/buttons.css" text="All">
+            <Pane fx:id="p4" layoutX="161.0" layoutY="305.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/yellowHexagon.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="categoriesButton" fx:id="buttonA" alignment="CENTER" contentDisplay="TOP" layoutX="25.0" layoutY="60.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" stylesheets="@../css/buttons.css" text="Adverb">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Button id="categoryButton" fx:id="buttonAll" alignment="CENTER" contentDisplay="CENTER" layoutX="282.0" layoutY="197.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" stylesheets="@../css/buttons.css" text="Play">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Button>
-            <Button id="categoryButton" alignment="CENTER" layoutX="282.0" layoutY="246.0" mnemonicParsing="false" onAction="#categoriesButtonAction" prefHeight="45.0" prefWidth="140.0" stylesheets="@../css/buttons.css" text="More">
+            <Button id="categoryButton" alignment="CENTER" layoutX="282.0" layoutY="248.0" mnemonicParsing="false" onAction="#categoriesButtonAction" prefHeight="45.0" prefWidth="140.0" stylesheets="@../css/buttons.css" text="More">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

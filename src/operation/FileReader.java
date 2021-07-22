@@ -2,39 +2,47 @@ package operation;
 
 import exceptions.IncorrectLineException;
 import management.CardsManager;
-import management.Controller;
+import controllers.Controller;
 import phrases.Phrase;
+import settings.Settings;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
 
-public class FileReader {
-    //Static
-    private static List<String> dateList;
-    private static List<Double> timeList;
+public class FileReader implements Settings {
+    //Static:
+    private static List<String> correctDateList, incorrectDateList;
+    private static List<Double> correctTimeList, incorrectTimeList;
 
-    public static void readCards(String inFile) throws FileNotFoundException {
-        Scanner readingFile;
-        readingFile = new Scanner(new File(inFile));
-        while (readingFile.hasNextLine()) {
-            String tmpLine = readingFile.nextLine();
-            try {
-                formatCorrectness(tmpLine);
-            } catch (IncorrectLineException e) {
-                System.out.println(e.toString());
+    public static void readCards() {
+        BufferedReader readingFile;
+        try {
+            readingFile = new BufferedReader(new InputStreamReader(new FileInputStream(wordPath), StandardCharsets.UTF_8));
+            String tmpLine = readingFile.readLine();
+            while (tmpLine != null) {
+                try {
+                    formatCorrectness(tmpLine);
+                } catch (IncorrectLineException e) {
+                    System.out.println(e.toString());
+                    break;
+                }
+                String engWord = extractEngWord(tmpLine);
+                List<String> translation = extractTranslation(tmpLine);
+                int correctAnswers = Integer.parseInt(tmpLine.substring(tmpLine.indexOf("<Result>") + 8, tmpLine.indexOf("<>")));
+                int allAnswers = Integer.parseInt(tmpLine.substring(tmpLine.indexOf("<>") + 2, tmpLine.indexOf("<Grp>")));
+                addToDictionary(tmpLine.substring(tmpLine.indexOf("<Grp>") + 5), engWord, translation, correctAnswers, allAnswers);
+                tmpLine = readingFile.readLine();
             }
-            String engWord = extractEngWord(tmpLine);
-            List<String> translation = extractTranslation(tmpLine);
-            int correctAnswers = Integer.parseInt(tmpLine.substring(tmpLine.indexOf("<Result>") + 8, tmpLine.indexOf("<>")));
-            int allAnswers = Integer.parseInt(tmpLine.substring(tmpLine.indexOf("<>") + 2, tmpLine.indexOf("<Grp>")));
-            addToDictionary(tmpLine.substring(tmpLine.indexOf("<Grp>") + 5), engWord, translation, correctAnswers, allAnswers);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
     private static void formatCorrectness(String tmpLine) throws IncorrectLineException {
@@ -80,51 +88,79 @@ public class FileReader {
         }
     }
 
-    public static void writeCards(String outFile, Iterator<Phrase> iterator) {
+    public static void writeCards(Iterator<Phrase> iterator) {
         PrintWriter writingFile;
         try {
-            writingFile = new PrintWriter(outFile);
+            writingFile = new PrintWriter(new OutputStreamWriter(new FileOutputStream(wordPath), StandardCharsets.UTF_8));
             while (iterator.hasNext()) {
                 Phrase phrase = iterator.next();
                 writingFile.println("<Ang>" + phrase.getEngWord() + "<Pol>" + phrase.getTranslationAsOneString() + "<Result>" + phrase.getNmbOfCorrectAnswer() + "<>" + phrase.getNmbOfAnswer() + "<Grp>" + phrase.getGroup());
             }
             writingFile.close();
         } catch (FileNotFoundException e) {
-            System.out.println("It cannot save the file");
+            System.out.println("[INFO]It cannot save the file");
         }
     }
 
-    public static void writeCardsStats(Phrase phrase, Long currentTime, Double time) {
+    public static void writeCardsStats(Phrase phrase, Long currentTime, Double time, Answer answer) {
         PrintWriter printWriter;
         try {
             printWriter = new PrintWriter(new FileOutputStream(getPath(phrase), true));
-            printWriter.append("<Date>").append(String.valueOf(currentTime)).append("<Time>").append(String.valueOf(time));
+            switch (answer){
+                case CORRECT -> printWriter.append("<Date>").append(String.valueOf(currentTime)).append("<Time>").append(String.valueOf(time)).append("<Answer>").append("Correct");
+                case INCORRECT -> printWriter.append("<Date>").append(String.valueOf(currentTime)).append("<Time>").append(String.valueOf(time)).append("<Answer>").append("Incorrect");
+                case TYPO -> printWriter.append("<Date>").append(String.valueOf(currentTime)).append("<Time>").append(String.valueOf(time)).append("<Answer>").append("Typo");
+            }
             printWriter.println();
             printWriter.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("[INFO]Phrase " + phrase.getEngWord() + "should has history");
         }
     }
 
     public static void readPhraseStats(Phrase phrase) {
-        timeList = new ArrayList<>();
-        dateList = new ArrayList<>();
-        Scanner readingFile;
+        correctTimeList = new ArrayList<>();
+        correctDateList = new ArrayList<>();
+        incorrectTimeList = new ArrayList<>();
+        incorrectDateList = new ArrayList<>();
+        BufferedReader readingFile;
         try {
-            readingFile = new Scanner(new File(getPath(phrase)));
-            while (readingFile.hasNextLine()) {
-                String tmpLine = readingFile.nextLine();
-                dateList.add(tmpLine.substring(tmpLine.indexOf("<Date>") + 6, tmpLine.indexOf("<Time>")));
-                timeList.add(Double.parseDouble(tmpLine.substring(tmpLine.indexOf("<Time>") + 6)));
+            readingFile = new BufferedReader(new InputStreamReader(new FileInputStream(getPath(phrase))));
+            String tmpLine = readingFile.readLine();
+            while (tmpLine != null) {
+                String answeringDate = tmpLine.substring(tmpLine.indexOf("<Date>") + 6, tmpLine.indexOf("<Time>"));
+                if(!tmpLine.contains("<Answer>")){
+                    correctDateList.add(answeringDate);
+                    correctTimeList.add(Double.parseDouble(tmpLine.substring(tmpLine.indexOf("<Time>") + 6)));
+                } else{
+                    String answer = tmpLine.substring(tmpLine.indexOf("<Answer>") + 8).trim();
+                    double answeringTime = Double.parseDouble(tmpLine.substring(tmpLine.indexOf("<Time>") + 6, tmpLine.indexOf("<Answer>")));
+                    switch (answer){
+                        case "Correct", "Typo" -> {
+                            correctTimeList.add(answeringTime);
+                            correctDateList.add(answeringDate);
+                        }
+                        case "Incorrect" -> {
+                            incorrectTimeList.add(answeringTime);
+                            incorrectDateList.add(answeringDate);
+                        }
+                    }
+                }
+                tmpLine = readingFile.readLine();
             }
             readingFile.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("[INFO]There is no stats of Phrase");
+        } catch (IOException e) {
+            System.out.println("[INFO]" + phrase.getEngWord() + " has no history");
         }
     }
 
+    public static boolean removePhraseStats(Phrase phrase) {
+        File file = new File(getPath(phrase));
+        return file.delete();
+    }
+
     public static String getPath(Phrase phrase) {
-        return "src/source/words/stats/[" + phrase.hashCode() + "]" + phrase.getEngWord() + ".txt";
+        return historyPath + "[" + phrase.hashCode() + "]" + phrase.getEngWord() + ".txt";
     }
 
     public static boolean editName(String oldPath, String newPath) {
@@ -138,11 +174,20 @@ public class FileReader {
         return false;
     }
 
-    public static List<String> getDateList() {
-        return dateList;
+    public static List<String> getCorrectDateList() {
+        return correctDateList;
     }
 
-    public static List<Double> getTimeList() {
-        return timeList;
+    public static List<Double> getCorrectTimeList() {
+        return correctTimeList;
+    }
+
+
+    public static List<String> getIncorrectDateList() {
+        return incorrectDateList;
+    }
+
+    public static List<Double> getIncorrectTimeList() {
+        return incorrectTimeList;
     }
 }

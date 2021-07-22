@@ -80,7 +80,7 @@ public class Dictionary implements Iterable {
     public Phrase getNew(){
         List<Phrase> properPhrases = new ArrayList<>();
         for (Phrase phrase : flashcards) {
-            if(phrase.getRatio() == 1 && phrase.getNmbOfAnswer() == 0){
+            if(phrase.getNmbOfAnswer() == 0){
                 properPhrases.add(phrase);
             }
         }

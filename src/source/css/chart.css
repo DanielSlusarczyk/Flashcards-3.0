@@ -39,3 +39,14 @@
     -fx-stroke: transparent;
     -fx-stroke-width: 0;
 }
+
+.chart-series-line {
+    -fx-stroke-width: 2px;
+    -fx-effect: null;
+}
+
+.default-color0.chart-series-line { -fx-stroke: rgba(181, 21, 0, 0.7); }
+.default-color1.chart-series-line { -fx-stroke: rgba(255, 111, 0, 1); }
+
+.default-color0.chart-line-symbol { -fx-background-color: transparent, transparent; }
+.default-color1.chart-line-symbol { -fx-background-color: transparent, transparent; }

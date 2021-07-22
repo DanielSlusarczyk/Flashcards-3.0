@@ -4,14 +4,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="management.TransitionSceneController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TransitionSceneController">
    <children>
       <Label fx:id="categoryLabel" alignment="CENTER" contentDisplay="TOP" layoutX="197.0" layoutY="137.0" prefHeight="84.0" prefWidth="307.0" text="&lt;Category&gt;">
          <font>
-            <Font size="30.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="amountLabel" alignment="CENTER" layoutX="89.0" layoutY="221.0" prefHeight="141.0" prefWidth="522.0" text="&lt;Amount&gt;">
+      <Label fx:id="amountLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="227.0" prefHeight="141.0" prefWidth="522.0" text="&lt;Amount&gt;">
          <font>
             <Font size="96.0" />
          </font>
